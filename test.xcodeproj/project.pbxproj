@@ -21,7 +21,6 @@
 		F27483571E4FBB2600AB589B /* testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27483561E4FBB2600AB589B /* testUITests.swift */; };
 		F274C3331E8C99ED00A77306 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274C3321E8C99ED00A77306 /* Monster.swift */; };
 		F274C3351E8C9B9100A77306 /* GroundMonster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274C3341E8C9B9100A77306 /* GroundMonster.swift */; };
-		F2BD16401E58E7BD00581C1C /* MazeGeneratorArchaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD163F1E58E7BD00581C1C /* MazeGeneratorArchaic.swift */; };
 		F2CCE98E1E7EEF9900D03E79 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CCE98D1E7EEF9900D03E79 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +62,6 @@
 		F27483581E4FBB2600AB589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F274C3321E8C99ED00A77306 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		F274C3341E8C9B9100A77306 /* GroundMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroundMonster.swift; sourceTree = "<group>"; };
-		F2BD163F1E58E7BD00581C1C /* MazeGeneratorArchaic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeGeneratorArchaic.swift; sourceTree = "<group>"; };
 		F2CCE98D1E7EEF9900D03E79 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -126,7 +124,6 @@
 			children = (
 				F20615041E88969300D11687 /* TileRegister.swift */,
 				F27483361E4FBB2500AB589B /* GameScene.swift */,
-				F2BD163F1E58E7BD00581C1C /* MazeGeneratorArchaic.swift */,
 				F236BE691E8B434300AEA709 /* MazeGenerator.swift */,
 				F203B4DB1E568FC000B3F277 /* Tile.swift */,
 				F274C3311E8C99E000A77306 /* Monsters */,
@@ -310,7 +307,6 @@
 				F27483371E4FBB2500AB589B /* GameScene.swift in Sources */,
 				F274C3331E8C99ED00A77306 /* Monster.swift in Sources */,
 				F27483391E4FBB2500AB589B /* GameViewController.swift in Sources */,
-				F2BD16401E58E7BD00581C1C /* MazeGeneratorArchaic.swift in Sources */,
 				F20615051E88969300D11687 /* TileRegister.swift in Sources */,
 				F27483311E4FBB2500AB589B /* AppDelegate.swift in Sources */,
 				F236BE6A1E8B434300AEA709 /* MazeGenerator.swift in Sources */,
