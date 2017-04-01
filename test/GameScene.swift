@@ -54,12 +54,13 @@ class GameScene: SKScene {
         player?.run(SKAction.repeatForever(SKAction.sequence(([SKAction.scale(by: CGFloat(1.1), duration: 0.25), SKAction.scale(by: 1 / 1.1, duration: 0.25)]))))
         player?.run(SKAction.repeatForever(SKAction.sequence([SKAction.run {
             self.move()
+            self.moveMonsters()
         }, SKAction.wait(forDuration: 1/3)])))
         map = TileRegister(tileSize: tileSize, scene: self)
-        var x = -3
-        while x < 4 {
-            var y = -5
-            while y < 6 {
+        var x = -4
+        while x < 5 {
+            var y = -6
+            while y < 7 {
                 map?.addTile(y: y, x: x, state: getState(x: 500 + x, y: 500 + y))
                 y += 1
             }
@@ -103,7 +104,6 @@ class GameScene: SKScene {
     }
     
     func move() {
-        monster?.move()
         switch direction {
         case 0:
             if (checkMove(x: 0, y: 1)) {
@@ -194,7 +194,7 @@ class GameScene: SKScene {
         }
     }
     
-    func update() {
+    func moveMonsters() {
         monster?.move()
     }
     

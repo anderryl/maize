@@ -24,36 +24,38 @@ class TileRegister {
     }
     
     func appendTileRow(direction: Int, tileX: Int, tileY: Int) {
+        let sizeX = 4
+        let sizeY = 6
         if (direction == 0) {
-            var y = -3
-            while y < 4 {
+            var y = -1 * sizeX
+            while y < sizeX + 1 {
                 
-                addTile(y: 5, x: y, state: getState(x: tileX + y, y: tileY + 5))
+                addTile(y: sizeY, x: y, state: getState(x: tileX + y, y: tileY + sizeY))
                 
                 y += 1
             }
         }
         else {
             if (direction == 1) {
-                var y = -5
-                while y < 6 {
-                    addTile(y: y, x: 3, state: getState(x: tileX + 3, y: tileY + y))
+                var y = -1 * sizeY
+                while y < sizeY + 1 {
+                    addTile(y: y, x: sizeX, state: getState(x: tileX + sizeX, y: tileY + y))
                     y += 1
                 }
             }
             else {
                 if (direction == 2) {
-                    var y = -3
-                    while y < 4 {
-                        addTile(y: -5, x: y, state: getState(x: tileX + y, y: tileY - 5))
+                    var y = -1 * sizeX
+                    while y < sizeX + 1 {
+                        addTile(y: -1 * sizeY, x: y, state: getState(x: tileX + y, y: tileY - sizeY))
                         y += 1
                     }
                 }
                 else {
                     if (direction == 3) {
-                        var y = -5
-                        while y < 6 {
-                            addTile(y: y, x: -3, state: getState(x: tileX - 3, y: tileY + y))
+                        var y = -1 * sizeY
+                        while y < sizeY + 1 {
+                            addTile(y: y, x: -1 * sizeX, state: getState(x: tileX - sizeX, y: tileY + y))
                             y += 1
                         }
                     }

@@ -34,7 +34,7 @@ public extension UIDevice {
         case "iPhone8,1":                               return 10//"iPhone 6s"
         case "iPhone8,2":                               return 11//"iPhone 6s Plus"
         case "iPhone9,1", "iPhone9,3":                  return 12//"iPhone 7"
-        case "iPhone9,2", "iPhone9,4":                  return 13//"iPhone 7 Plus"
+        case "iPhone9,2", "iPhone9,4":                  return 170//"iPhone 7 Plus"
         case "iPhone8,4":                               return 14//"iPhone SE"
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return 15//"iPad 2"
         case "iPad3,1", "iPad3,2", "iPad3,3":           return 16//"iPad 3"
@@ -47,7 +47,7 @@ public extension UIDevice {
         case "iPad5,1", "iPad5,2":                      return 23//"iPad Mini 4"
         case "iPad6,3", "iPad6,4", "iPad6,7", "iPad6,8":return 24//"iPad Pro"
         case "AppleTV5,3":                              return 25//"Apple TV"
-        case "i386", "x86_64":                          return 150//"Simulator"
+        case "i386", "x86_64":                          return 100//"Simulator"
         default:                                        return 27
         }
     }
