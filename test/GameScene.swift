@@ -18,9 +18,10 @@ class GameScene: SKScene {
     var player: SKNode?
     var map: TileRegister?
     
-    var maze = [[UInt8]]()
-    var tileSize: Double = 170 //a tile size should be 1/5 of the width of the screen
-    var level: Int = 0
+    var maze: [[UInt8]] = [[UInt8]]()
+    var tileSize: Double = 170 //a tile size should be 1/7 of the width of the screen
+    var level: Int = 1
+    var controller: GameViewController?
     
     var swipeDown: UISwipeGestureRecognizer?
     var swipeUp: UISwipeGestureRecognizer?
@@ -29,7 +30,6 @@ class GameScene: SKScene {
     var monster: Monster?
     
     override func didMove(to view: SKView) {
-        maze = MazeGenerator.init().getMaze()
         swipeDown = UISwipeGestureRecognizer.init(target: self, action: #selector(GameScene.inputDown))
         swipeDown?.direction = UISwipeGestureRecognizerDirection.down
         self.view?.addGestureRecognizer(swipeDown!)
@@ -57,21 +57,19 @@ class GameScene: SKScene {
             self.moveMonsters()
         }, SKAction.wait(forDuration: 1/3)])))
         map = TileRegister(tileSize: tileSize, scene: self)
-        var x = -4
-        while x < 5 {
-            var y = -6
-            while y < 7 {
-                map?.addTile(y: y, x: x, state: getState(x: 500 + x, y: 500 + y))
-                y += 1
-            }
-            x += 1
-        }
+        
         monster = GroundMonster(x: 500, y: 500, callRate: 60, scene: self)
     }
     
-    init(size: CGSize, level: Int, tile: Double) {
+    init(size: CGSize, tile: Double, controller: GameViewController, maze: [[UInt8]], level: Int, x: Int, y: Int) {
+        self.maze = maze
         self.level = level
         tileSize = tile
+        self.controller = controller
+        tileX = x
+        tileY = y
+        positionX = Double(x)
+        positionY = Double(y)
         super.init(size: size)
     }
     
@@ -181,6 +179,7 @@ class GameScene: SKScene {
         }
         direction = 3;
         tileX -= 1;
+        
         map?.appendTileRow(direction: Int(direction), tileX: tileX, tileY: tileY)
     }
     
@@ -196,6 +195,10 @@ class GameScene: SKScene {
     
     func moveMonsters() {
         monster?.move()
+    }
+    
+    func end() {
+        controller?.completeLevel(x: tileX, y: tileY)
     }
     
 }

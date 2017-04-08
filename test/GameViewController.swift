@@ -10,19 +10,20 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+
 class GameViewController: UIViewController {
 
     var scene: SKScene? = nil;
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scene = GameScene(size: CGSize(width: 2048, height: 1536), level: 0, tile: UIDevice.current.width /*Double(UIScreen.main.bounds.width) / 2.5*/)
+        scene = GameScene(size: CGSize(width: 2048, height: 1536), tile: UIDevice.current.width /*Double(UIScreen.main.bounds.width) / 2.5*/, controller: self, maze: loadMaze(), level: loadInteger(key: "level"), x: loadInteger(key: "x"), y: loadInteger(key: "y"))
         let view = self.view as! SKView
         view.ignoresSiblingOrder = true
         view.showsFPS = true
         view.showsNodeCount = true
         scene?.scaleMode = .aspectFill
-        view.presentScene(scene)        
+        view.presentScene(scene)
     }
 
     override var shouldAutorotate: Bool {
@@ -45,5 +46,46 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    private func saveInteger(key: String, value: Int) {
+        UserDefaults.standard.set(value, forKey: key)
+    }
+    private func saveMaze(value: [[UInt8]]) {
+        UserDefaults.standard.set(NSArray(array: value), forKey: "maze")
+    }
+    
+    func loadMaze() -> [[UInt8]] {
+        let maze: [[UInt8]]? = UserDefaults.standard.array(forKey: "maze") as? [[UInt8]]
+        let count = maze?.count
+        let _ = maze?.count
+        if (count != 1) {
+            return maze!
+        }
+        else {
+            let maze = MazeGenerator.init().getMaze()
+            saveMaze(value: maze)
+            return maze
+        }
+        
+    }
+    
+    func loadInteger(key: String) -> Int {
+        let int: Int? = UserDefaults.standard.integer(forKey: key)
+        if (int != nil) {
+            return int!
+        }
+        switch key {
+            case "level": return 1
+            case "x", "y": return 500
+            default: return 1
+            // put other default values here
+        }
+    }
+    
+    func completeLevel(x: Int, y: Int) {
+        saveInteger(key: "level", value: loadInteger(key: "level") + 1)
+        saveInteger(key: "x", value: x)
+        saveInteger(key: "y", value: y)
     }
 }

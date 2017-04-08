@@ -17,6 +17,15 @@ class TileRegister {
     init(tileSize: Double, scene: GameScene) {
         self.tileSize = tileSize
         self.scene = scene
+        var x = -4
+        while x < 5 {
+            var y = -6
+            while y < 7 {
+                addTile(y: y, x: x, state: getState(x: 500 + x, y: 500 + y))
+                y += 1
+            }
+            x += 1
+        }
     }
     
     func getMap() -> [Tile] {
@@ -24,7 +33,7 @@ class TileRegister {
     }
     
     func appendTileRow(direction: Int, tileX: Int, tileY: Int) {
-        let sizeX = 4
+        let sizeX = 5
         let sizeY = 6
         if (direction == 0) {
             var y = -1 * sizeX
@@ -79,11 +88,6 @@ class TileRegister {
             x += 1
         }
         map = nMap
-        //for index in deletes {
-        //    if (index < map.count) {
-        //        map.remove(at: index)
-        //    }
-        //}
     }
     
     func addTile(y: Int, x: Int, state: UInt8) {
