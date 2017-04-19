@@ -33,8 +33,8 @@ class TileRegister {
     }
     
     func appendTileRow(direction: Int, tileX: Int, tileY: Int) {
-        let sizeX = 5
-        let sizeY = 6
+        let sizeX = 3
+        let sizeY = 5
         if (direction == 0) {
             var y = -1 * sizeX
             while y < sizeX + 1 {

@@ -19,61 +19,56 @@ class GroundMonster: Monster {
     var callRate: Int
     var tileX: Int
     var tileY: Int
-    var speed: Int // in ticks per tile
+    var speed: Double // in seconds per tile
     var direction: Int = 0
     
-    required init(x: Double, y: Double, callRate: Int, scene: GameScene) {
+    required init(x: Double, y: Double, speed: Double, scene: GameScene) {
         self.x = x
         self.y = y
         self.scene = scene
-        self.callRate = callRate
+        self.callRate = Int(60 * speed)
         tileX = Int(x)
         tileY = Int(y)
         tileSize = scene.tileSize
-        node = SKShapeNode(ellipseIn: CGRect(x: (x - scene.positionX - tileSize / 3) * tileSize, y: (y - scene.positionY - tileSize / 3) * tileSize, width: tileSize * 2/3, height: tileSize * 2/3))
+        node = SKShapeNode.init(ellipseIn: CGRect.init(x: Int(0 - (tileSize/3)), y: Int(0 - (tileSize/3)), width: Int(tileSize * 2/3), height: Int(tileSize * 2/3)))
         (node as! SKShapeNode).fillColor = UIColor.red
+        node.zPosition = 5
+        let difX = (Int(x) - scene.tileX) * Int(tileSize)
+        let difY = (Int(y) - scene.tileY) * Int(tileSize)
+        node.position.x = CGFloat(difX)
+        node.position.y = CGFloat(difY)
         scene.addChild(node)
-        self.speed = callRate
+        self.speed = speed
     }
     
     
     func move() {
         let maze = scene.maze
-        let xc = scene.positionX
-        let yc = scene.positionY
         if (callIndex == callRate) {
             callIndex = 0
             evaluate(maze: maze)
             switch direction {
             case 0:
                 tileY += 1
+                node.run(SKAction.moveBy(x: CGFloat(0), y: CGFloat(tileSize), duration: speed))
             case 1:
                 tileX += 1
+                node.run(SKAction.moveBy(x: CGFloat(tileSize), y: CGFloat(0), duration: speed))
             case 2:
                 tileY -= 1
+                node.run(SKAction.moveBy(x: CGFloat(0), y: CGFloat(-1 * tileSize), duration: speed))
             case 3:
                 tileX -= 1
+                node.run(SKAction.moveBy(x: CGFloat(-1 * tileSize), y: CGFloat(0), duration: speed))
             default:
                 break
             }
+            
             x = Double(tileX)
             y = Double(tileY)
         }
-        switch direction {
-        case 0:
-            y += Double(1/speed)
-        case 1:
-            x += Double(1/speed)
-        case 2:
-            y -= Double(1/speed)
-        case 3:
-            x -= Double(1/speed)
-        default:
-            break
-        }
+        
         callIndex += 1
-        node.position.x = CGFloat(x - xc)
-        node.position.y = CGFloat(y - yc)
     }
     
     func evaluate(maze: [[UInt8]]) {
@@ -99,6 +94,21 @@ class GroundMonster: Monster {
         direction = possible[index]
     }
     
+    func playerMove(direction: Int) {
+        switch direction {
+        case 0:
+            node.run(SKAction.moveBy(x: CGFloat(0), y: CGFloat(-1 * tileSize), duration: 1/3))
+        case 1:
+            node.run(SKAction.moveBy(x: CGFloat(-1 * tileSize), y: CGFloat(0), duration: 1/3))
+        case 2:
+            node.run(SKAction.moveBy(x: CGFloat(0), y: CGFloat(tileSize), duration: 1/3))
+        case 3:
+            node.run(SKAction.moveBy(x: CGFloat(tileSize), y: CGFloat(0), duration: 1/3))
+        default:
+            break
+        }
+    }
+    
     func getState(x: Int, y: Int, maze: [[UInt8]]) -> UInt8 {
         if (0 <= x && x < maze.count && 0 <= y && y < maze.count) {
             return maze[x][y]
@@ -109,6 +119,6 @@ class GroundMonster: Monster {
     }
     
     func remove() {
-        
+        node.removeFromParent()
     }
 }

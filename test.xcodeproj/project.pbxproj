@@ -21,7 +21,7 @@
 		F27483571E4FBB2600AB589B /* testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27483561E4FBB2600AB589B /* testUITests.swift */; };
 		F274C3331E8C99ED00A77306 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274C3321E8C99ED00A77306 /* Monster.swift */; };
 		F274C3351E8C9B9100A77306 /* GroundMonster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274C3341E8C9B9100A77306 /* GroundMonster.swift */; };
-		F2CCE98E1E7EEF9900D03E79 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CCE98D1E7EEF9900D03E79 /* CoreData.framework */; };
+		F28E40631EA6EC4F00EDA2F1 /* MonsterRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28E40621EA6EC4F00EDA2F1 /* MonsterRegister.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,7 @@
 /* Begin PBXFileReference section */
 		F203B4DB1E568FC000B3F277 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F20615001E884D0C00D11687 /* DeviceCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCheck.swift; sourceTree = "<group>"; };
-		F20615041E88969300D11687 /* TileRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileRegister.swift; sourceTree = "<group>"; };
+		F20615041E88969300D11687 /* TileRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileRegister.swift; sourceTree = "<group>"; usesTabs = 0; };
 		F236BE691E8B434300AEA709 /* MazeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeGenerator.swift; sourceTree = "<group>"; };
 		F274832D1E4FBB2500AB589B /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27483301E4FBB2500AB589B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = test/AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		F27483581E4FBB2600AB589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F274C3321E8C99ED00A77306 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		F274C3341E8C9B9100A77306 /* GroundMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroundMonster.swift; sourceTree = "<group>"; };
-		F2CCE98D1E7EEF9900D03E79 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F28E40621EA6EC4F00EDA2F1 /* MonsterRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterRegister.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2CCE98E1E7EEF9900D03E79 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +154,7 @@
 			children = (
 				F274C3321E8C99ED00A77306 /* Monster.swift */,
 				F274C3341E8C9B9100A77306 /* GroundMonster.swift */,
+				F28E40621EA6EC4F00EDA2F1 /* MonsterRegister.swift */,
 			);
 			name = Monsters;
 			sourceTree = "<group>";
@@ -162,7 +162,6 @@
 		F2CCE98C1E7EEF9900D03E79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F2CCE98D1E7EEF9900D03E79 /* CoreData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -305,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F27483371E4FBB2500AB589B /* GameScene.swift in Sources */,
+				F28E40631EA6EC4F00EDA2F1 /* MonsterRegister.swift in Sources */,
 				F274C3331E8C99ED00A77306 /* Monster.swift in Sources */,
 				F27483391E4FBB2500AB589B /* GameViewController.swift in Sources */,
 				F20615051E88969300D11687 /* TileRegister.swift in Sources */,

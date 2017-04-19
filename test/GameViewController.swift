@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         scene = GameScene(size: CGSize(width: 2048, height: 1536), tile: UIDevice.current.width /*Double(UIScreen.main.bounds.width) / 2.5*/, controller: self, maze: loadMaze(), level: loadInteger(key: "level"), x: loadInteger(key: "x"), y: loadInteger(key: "y"))
         let view = self.view as! SKView
         view.ignoresSiblingOrder = true
@@ -59,7 +60,7 @@ class GameViewController: UIViewController {
         let maze: [[UInt8]]? = UserDefaults.standard.array(forKey: "maze") as? [[UInt8]]
         let count = maze?.count
         let _ = maze?.count
-        if (count != 1) {
+        if (count != nil) {
             return maze!
         }
         else {
@@ -72,7 +73,7 @@ class GameViewController: UIViewController {
     
     func loadInteger(key: String) -> Int {
         let int: Int? = UserDefaults.standard.integer(forKey: key)
-        if (int != nil) {
+        if (int != 0) {
             return int!
         }
         switch key {

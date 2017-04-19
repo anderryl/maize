@@ -18,8 +18,9 @@ protocol Monster {
     var callIndex: Int {get}
     var callRate: Int {get}
     
-    
     func move()
+    
+    func playerMove(direction: Int)
     
     func remove()
 }

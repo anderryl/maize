@@ -14,7 +14,6 @@ class Tile {
     
     init(state: UInt8, size: CGRect, scene: SKScene) {
         ground = SKShapeNode.init(rect: size, cornerRadius: 0);
-        //self.scene = scene;
         (ground as! SKShapeNode).fillColor = UIColor.brown;
         ground.zPosition = 2;
         if (state == 1) {

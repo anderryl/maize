@@ -17,6 +17,7 @@ class GameScene: SKScene {
     var direction: Int8 = 4
     var player: SKNode?
     var map: TileRegister?
+    var monsters: MonsterRegister?
     
     var maze: [[UInt8]] = [[UInt8]]()
     var tileSize: Double = 170 //a tile size should be 1/7 of the width of the screen
@@ -27,7 +28,7 @@ class GameScene: SKScene {
     var swipeUp: UISwipeGestureRecognizer?
     var swipeLeft: UISwipeGestureRecognizer?
     var swipeRight: UISwipeGestureRecognizer?
-    var monster: Monster?
+    var node: SKShapeNode?
     
     override func didMove(to view: SKView) {
         swipeDown = UISwipeGestureRecognizer.init(target: self, action: #selector(GameScene.inputDown))
@@ -54,11 +55,12 @@ class GameScene: SKScene {
         player?.run(SKAction.repeatForever(SKAction.sequence(([SKAction.scale(by: CGFloat(1.1), duration: 0.25), SKAction.scale(by: 1 / 1.1, duration: 0.25)]))))
         player?.run(SKAction.repeatForever(SKAction.sequence([SKAction.run {
             self.move()
-            self.moveMonsters()
         }, SKAction.wait(forDuration: 1/3)])))
+        player?.run(SKAction.repeatForever(SKAction.sequence([SKAction.run {
+            self.moveMonsters()
+            }, SKAction.wait(forDuration: 1/60)])))
         map = TileRegister(tileSize: tileSize, scene: self)
-        
-        monster = GroundMonster(x: 500, y: 500, callRate: 60, scene: self)
+        monsters = MonsterRegister(level: level, scene: self)
     }
     
     init(size: CGSize, tile: Double, controller: GameViewController, maze: [[UInt8]], level: Int, x: Int, y: Int) {
@@ -106,31 +108,35 @@ class GameScene: SKScene {
         case 0:
             if (checkMove(x: 0, y: 1)) {
                 moveUp()
+                monsters?.playerMove()
                 break
             }
             stop()
         case 1:
             if (checkMove(x: 1, y: 0)) {
                 moveRight()
+                monsters?.playerMove()
                 break
             }
             stop()
         case 2:
             if (checkMove(x: 0, y: -1)) {
                 moveDown()
+                monsters?.playerMove()
                 break
             }
             stop()
         case 3:
             if (checkMove(x: -1, y: 0)) {
                 moveLeft()
+                monsters?.playerMove()
                 break
             }
             stop()
         default:
             break
         }
-        
+        monsters?.appendMonsterRow()
     }
     
     func checkMove(x: Int, y: Int) -> Bool {
@@ -194,7 +200,7 @@ class GameScene: SKScene {
     }
     
     func moveMonsters() {
-        monster?.move()
+        monsters?.moveMonsters()
     }
     
     func end() {
