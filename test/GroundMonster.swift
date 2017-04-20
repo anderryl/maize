@@ -69,6 +69,9 @@ class GroundMonster: Monster {
         }
         
         callIndex += 1
+        if (Int(x) == scene.tileX && Int(y) == scene.tileY) {
+            scene.controller?.failLevel()
+        }
     }
     
     func evaluate(maze: [[UInt8]]) {

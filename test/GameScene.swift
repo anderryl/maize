@@ -28,6 +28,7 @@ class GameScene: SKScene {
     var swipeUp: UISwipeGestureRecognizer?
     var swipeLeft: UISwipeGestureRecognizer?
     var swipeRight: UISwipeGestureRecognizer?
+    var tapStop: UITapGestureRecognizer?
     var node: SKShapeNode?
     
     override func didMove(to view: SKView) {
@@ -46,6 +47,9 @@ class GameScene: SKScene {
         swipeRight = UISwipeGestureRecognizer.init(target: self, action: #selector(GameScene.inputRight))
         swipeRight?.direction = UISwipeGestureRecognizerDirection.right
         self.view?.addGestureRecognizer(swipeRight!)
+        
+        tapStop = UITapGestureRecognizer.init(target: self, action: #selector(GameScene.inputStop))
+        self.view?.addGestureRecognizer(tapStop!)
         
         anchorPoint = (CGPoint.init(x: 0.5, y: 0.5))
         player = SKShapeNode.init(ellipseIn: CGRect.init(x: Int(0 - (tileSize/3)), y: Int(0 - (tileSize/3)), width: Int(tileSize * 2/3), height: Int(tileSize * 2/3)))
@@ -93,6 +97,10 @@ class GameScene: SKScene {
     
     func inputRight() {
         direction = 1
+    }
+    
+    func inputStop() {
+        direction = 4
     }
     
     //0 up, 1 right, 2 down, 3 left, 4 stop

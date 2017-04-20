@@ -17,14 +17,14 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        scene = GameScene(size: CGSize(width: 2048, height: 1536), tile: UIDevice.current.width /*Double(UIScreen.main.bounds.width) / 2.5*/, controller: self, maze: loadMaze(), level: loadInteger(key: "level"), x: loadInteger(key: "x"), y: loadInteger(key: "y"))
+        /*scene = MenuScene(controller: self)
         let view = self.view as! SKView
         view.ignoresSiblingOrder = true
         view.showsFPS = true
         view.showsNodeCount = true
         scene?.scaleMode = .aspectFill
-        view.presentScene(scene)
+        view.presentScene(scene!, transition: SKTransition.fade(with: UIColor.white, duration: 1.0))*/
+        startLevel()
     }
 
     override var shouldAutorotate: Bool {
@@ -47,6 +47,16 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func startLevel() {
+        scene = GameScene(size: CGSize(width: 2048, height: 1536), tile: UIDevice.current.width /*Double(UIScreen.main.bounds.width) / 2.5*/, controller: self, maze: loadMaze(), level: loadInteger(key: "level"), x: loadInteger(key: "x"), y: loadInteger(key: "y"))
+        let view = self.view as! SKView
+        view.ignoresSiblingOrder = true
+        view.showsFPS = true
+        view.showsNodeCount = true
+        scene?.scaleMode = .aspectFill
+        view.presentScene(scene!, transition: SKTransition.fade(with: UIColor.white, duration: 1.0))
     }
     
     private func saveInteger(key: String, value: Int) {
@@ -88,5 +98,9 @@ class GameViewController: UIViewController {
         saveInteger(key: "level", value: loadInteger(key: "level") + 1)
         saveInteger(key: "x", value: x)
         saveInteger(key: "y", value: y)
+    }
+    
+    func failLevel() {
+        startLevel()
     }
 }
