@@ -17,20 +17,25 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*scene = MenuScene(controller: self)
+        
+        //initializes the menu scene where you start
+        scene = MenuScene(controller: self)
+        (scene as? MenuScene)?.controller = self
         let view = self.view as! SKView
         view.ignoresSiblingOrder = true
         view.showsFPS = true
         view.showsNodeCount = true
         scene?.scaleMode = .aspectFill
-        view.presentScene(scene!, transition: SKTransition.fade(with: UIColor.white, duration: 1.0))*/
-        startLevel()
+        //sets the menu scene as the actie scene
+        view.presentScene(scene!, transition: SKTransition.fade(with: UIColor.white, duration: 1.0))
+        //startLevel()
+
     }
 
     override var shouldAutorotate: Bool {
         return true
     }
-
+    //the only supported orientation is portrait
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -56,7 +61,7 @@ class GameViewController: UIViewController {
         view.showsFPS = true
         view.showsNodeCount = true
         scene?.scaleMode = .aspectFill
-        view.presentScene(scene!, transition: SKTransition.fade(with: UIColor.white, duration: 1.0))
+        view.presentScene(scene!, transition: SKTransition.fade(with: UIColor.black, duration: 1.0))
     }
     
     private func saveInteger(key: String, value: Int) {
@@ -98,6 +103,7 @@ class GameViewController: UIViewController {
         saveInteger(key: "level", value: loadInteger(key: "level") + 1)
         saveInteger(key: "x", value: x)
         saveInteger(key: "y", value: y)
+        startLevel()
     }
     
     func failLevel() {

@@ -43,8 +43,11 @@ class GroundMonster: Monster {
     
     
     func move() {
+        if (abs(node.position.x) <= CGFloat(tileSize * 2/3) && abs(node.position.y) <= CGFloat(tileSize * 2/3)) {
+            scene.controller?.failLevel()
+        }
         let maze = scene.maze
-        if (callIndex == callRate) {
+        if (callIndex >= callRate) {
             callIndex = 0
             evaluate(maze: maze)
             switch direction {
@@ -69,9 +72,9 @@ class GroundMonster: Monster {
         }
         
         callIndex += 1
-        if (Int(x) == scene.tileX && Int(y) == scene.tileY) {
+        /*if (Int(x) == scene.tileX && Int(y) == scene.tileY) {
             scene.controller?.failLevel()
-        }
+        }*/
     }
     
     func evaluate(maze: [[UInt8]]) {

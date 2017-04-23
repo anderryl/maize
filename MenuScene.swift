@@ -11,17 +11,23 @@ import SpriteKit
 
 class MenuScene: SKScene {
     
-    var playButton: UIButton?
+    var playButton: SKLabelNode?
     var controller: GameViewController?
+    var tapRecognizer: UITapGestureRecognizer?
     
     override func didMove(to view: SKView) {
+        scene?.backgroundColor = UIColor.yellow
         anchorPoint = (CGPoint.init(x: 0.5, y: 0.5))
-        playButton = UIButton(frame: CGRect(x: -50, y: 50, width: 100, height: 100))
-        playButton?.setTitle("Play", for: UIControlState.application)
-        playButton?.target(forAction: #selector(MenuScene.startLevel), withSender: self)
-        playButton?.titleLabel?.text = "Play"
-        playButton?.titleLabel?.backgroundColor = UIColor.blue
-        view.addSubview(playButton!)
+        playButton = SKLabelNode(text: "tap to start")
+        playButton?.fontColor = UIColor.brown
+        playButton?.fontSize = 100
+        playButton?.position.x = 0
+        playButton?.position.y = 0
+        playButton?.horizontalAlignmentMode = .center
+        playButton?.verticalAlignmentMode = .center
+        playButton?.zPosition = 10
+        addChild(playButton!)
+        playButton?.run(SKAction.repeatForever(SKAction.sequence([SKAction.fadeOut(withDuration: 1.0), SKAction.fadeIn(withDuration: 1.0), SKAction.wait(forDuration: 1.0)])))
     }
     
     init(controller: GameViewController) {
@@ -33,9 +39,14 @@ class MenuScene: SKScene {
         super.init(size: size)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        controller?.startLevel()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     func startLevel() {
         controller?.startLevel()

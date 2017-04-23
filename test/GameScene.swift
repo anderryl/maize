@@ -8,6 +8,10 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
+
+public let playerMask: UInt32 = 0x1 << 1
+public let monsterMask: UInt32 = 0x1 << 2
 
 class GameScene: SKScene {
     var positionX: Double = 500
@@ -30,6 +34,10 @@ class GameScene: SKScene {
     var swipeRight: UISwipeGestureRecognizer?
     var tapStop: UITapGestureRecognizer?
     var node: SKShapeNode?
+    var time: Int?
+    var timerLabel: SKLabelNode?
+    var musicPlayer: AVAudioPlayer?
+    var mplayer: AVAudioPlayer?
     
     override func didMove(to view: SKView) {
         swipeDown = UISwipeGestureRecognizer.init(target: self, action: #selector(GameScene.inputDown))
@@ -51,7 +59,10 @@ class GameScene: SKScene {
         tapStop = UITapGestureRecognizer.init(target: self, action: #selector(GameScene.inputStop))
         self.view?.addGestureRecognizer(tapStop!)
         
+        
         anchorPoint = (CGPoint.init(x: 0.5, y: 0.5))
+        
+        
         player = SKShapeNode.init(ellipseIn: CGRect.init(x: Int(0 - (tileSize/3)), y: Int(0 - (tileSize/3)), width: Int(tileSize * 2/3), height: Int(tileSize * 2/3)))
         (player as! SKShapeNode).fillColor = UIColor.green
         player?.zPosition = 3
@@ -63,8 +74,40 @@ class GameScene: SKScene {
         player?.run(SKAction.repeatForever(SKAction.sequence([SKAction.run {
             self.moveMonsters()
             }, SKAction.wait(forDuration: 1/60)])))
+        
         map = TileRegister(tileSize: tileSize, scene: self)
-        monsters = MonsterRegister(level: level, scene: self)
+        
+        
+        monsters = MonsterRegister(level: level, scene: self, index: level * 2 + 3)
+        
+        
+        time = 60 + (level * 3)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.countdown), userInfo: nil, repeats: true)
+        
+        
+        let levelLabel = SKLabelNode(text: "Day " + level.description)
+        levelLabel.fontSize = 100
+        levelLabel.fontColor = UIColor.black
+        levelLabel.fontName = "Zapfino"
+        levelLabel.horizontalAlignmentMode = .center
+        levelLabel.zPosition = 10
+        levelLabel.position.x = 0
+        levelLabel.position.y = CGFloat(tileSize) * 2
+        addChild(levelLabel)
+        levelLabel.run(SKAction.sequence([SKAction.wait(forDuration: 2), SKAction.fadeOut(withDuration: 1)]))
+        
+        
+        timerLabel = SKLabelNode(text: time?.description)
+        timerLabel?.fontSize = 50
+        timerLabel?.horizontalAlignmentMode = .center
+        timerLabel?.verticalAlignmentMode = .center
+        timerLabel?.fontColor = UIColor.black
+        timerLabel?.zPosition = 10
+        timerLabel?.position.x = CGFloat(Int(tileSize) * -2)
+        timerLabel?.position.y = CGFloat(Int(tileSize) * 4)
+        addChild(timerLabel!)
+        
+        playMusic()
     }
     
     init(size: CGSize, tile: Double, controller: GameViewController, maze: [[UInt8]], level: Int, x: Int, y: Int) {
@@ -210,6 +253,35 @@ class GameScene: SKScene {
     func moveMonsters() {
         monsters?.moveMonsters()
     }
+    
+    func countdown() {
+        time! -= 1
+        if (time == 0) {
+            end()
+        }
+        timerLabel?.text = time?.description
+        
+    }
+    
+    
+    func playMusic() {
+        guard let sound = NSDataAsset(name: "BackgroundMusic") else {
+            return
+        }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            mplayer = try AVAudioPlayer(data: sound.data, fileTypeHint: AVFileTypeWAVE)
+            
+            mplayer!.play()
+            mplayer?.numberOfLoops = -1
+        } catch _ as NSError {
+            fatalError("MUSIC NO PLAY! WHAT WRONG WIT ME!?")
+        }
+    }
+    
     
     func end() {
         controller?.completeLevel(x: tileX, y: tileY)

@@ -12,10 +12,12 @@ class MonsterRegister {
     var monsters: [Monster] = [Monster]()
     var level: Int
     var scene: GameScene
+    var monsterIndex: Int
     
-    init(level: Int, scene: GameScene) {
+    init(level: Int, scene: GameScene, index: Int) {
        self.level = level
        self.scene = scene
+       self.monsterIndex = index
     }
     
     func appendMonsterRow() {
@@ -30,14 +32,14 @@ class MonsterRegister {
         while (i < 11) {
             if (dir.0 == 0) {
                 if (scene.getState(x: scene.tileX + i, y: scene.tileY + (dir.1 * 20)) == 0) {
-                    if (arc4random_uniform(100) + 1 <= 1) {
+                    if (Int(arc4random_uniform(1000)) + 1 <= monsterIndex) {
                         monsters.append(getNewMonster(x: scene.tileX + i, y: scene.tileY + (dir.1 * 20)))
                     }
                 }
             }
             else {
                 if (scene.getState(x: scene.tileX + (dir.0 * 20), y: scene.tileY + i) == 0) {
-                    if (arc4random_uniform(100) + 1 <= 1) {
+                    if (Int(arc4random_uniform(1000)) + 1 <= monsterIndex) {
                         monsters.append(getNewMonster(x: scene.tileX + (dir.0 * 20), y: scene.tileY + i))
                     }
                 }
@@ -47,7 +49,8 @@ class MonsterRegister {
     }
     
     private func getNewMonster(x: Int, y: Int) -> Monster {
-        return GroundMonster(x: Double(x), y: Double(y), speed: 1/3, scene: scene)
+        //return GroundMonster(x: Double(x), y: Double(y), speed: 1/3, scene: scene)
+        return AirMonster(x: Double(x), y: Double(y), speed: 1/3, scene: scene)
     }
     
     func moveMonsters() {

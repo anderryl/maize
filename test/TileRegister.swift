@@ -21,7 +21,7 @@ class TileRegister {
         while x < 5 {
             var y = -6
             while y < 7 {
-                addTile(y: y, x: x, state: getState(x: 500 + x, y: 500 + y))
+                addTile(y: y, x: x, state: getState(x: scene.tileX + x, y: scene.tileY + y))
                 y += 1
             }
             x += 1

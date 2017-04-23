@@ -23,6 +23,8 @@
 		F274C3351E8C9B9100A77306 /* GroundMonster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274C3341E8C9B9100A77306 /* GroundMonster.swift */; };
 		F28E40631EA6EC4F00EDA2F1 /* MonsterRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28E40621EA6EC4F00EDA2F1 /* MonsterRegister.swift */; };
 		F28E40651EA8472E00EDA2F1 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28E40641EA8472E00EDA2F1 /* MenuScene.swift */; };
+		F2A6C9161EABFE7900B71429 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A6C9151EABFE7900B71429 /* AVFoundation.framework */; };
+		F2A6C9181EAD1B3600B71429 /* AirMonster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6C9171EAD1B3600B71429 /* AirMonster.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		F274C3341E8C9B9100A77306 /* GroundMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroundMonster.swift; sourceTree = "<group>"; };
 		F28E40621EA6EC4F00EDA2F1 /* MonsterRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterRegister.swift; sourceTree = "<group>"; };
 		F28E40641EA8472E00EDA2F1 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		F2A6C9151EABFE7900B71429 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F2A6C9171EAD1B3600B71429 /* AirMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirMonster.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2A6C9161EABFE7900B71429 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +162,7 @@
 			children = (
 				F274C3321E8C99ED00A77306 /* Monster.swift */,
 				F274C3341E8C9B9100A77306 /* GroundMonster.swift */,
+				F2A6C9171EAD1B3600B71429 /* AirMonster.swift */,
 				F28E40621EA6EC4F00EDA2F1 /* MonsterRegister.swift */,
 			);
 			name = Monsters;
@@ -165,6 +171,7 @@
 		F2CCE98C1E7EEF9900D03E79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2A6C9151EABFE7900B71429 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -309,6 +316,7 @@
 				F27483371E4FBB2500AB589B /* GameScene.swift in Sources */,
 				F28E40631EA6EC4F00EDA2F1 /* MonsterRegister.swift in Sources */,
 				F28E40651EA8472E00EDA2F1 /* MenuScene.swift in Sources */,
+				F2A6C9181EAD1B3600B71429 /* AirMonster.swift in Sources */,
 				F274C3331E8C99ED00A77306 /* Monster.swift in Sources */,
 				F27483391E4FBB2500AB589B /* GameViewController.swift in Sources */,
 				F20615051E88969300D11687 /* TileRegister.swift in Sources */,
