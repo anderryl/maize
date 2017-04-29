@@ -13,7 +13,7 @@ class AirMonster: Monster {
     var x: Double
     var y: Double
     var node: SKNode
-    var scene: GameScene
+    var scene: GameScene?
     var tileSize: Double
     var callIndex: Int = 0
     var callRate: Int
@@ -24,9 +24,9 @@ class AirMonster: Monster {
     required init(x: Double, y: Double, speed: Double, scene: GameScene) {
         self.x = x
         self.y = y
-        self.scene = scene
         self.callRate = Int(60 * speed)
-        tileSize = scene.tileSize
+        self.scene = scene
+        tileSize = (scene.tileSize)
         node = SKShapeNode()
         let path = UIBezierPath()
         path.move(to: CGPoint(x: tileSize * -1/3, y: tileSize * -1/3))
@@ -35,8 +35,8 @@ class AirMonster: Monster {
         (node as? SKShapeNode)?.path = path.cgPath
         (node as! SKShapeNode).fillColor = UIColor.red
         node.zPosition = 5
-        let difX = (Int(x) - scene.tileX) * Int(tileSize)
-        let difY = (Int(y) - scene.tileY) * Int(tileSize)
+        let difX = (Int(x) - (scene.tileX)) * Int(tileSize)
+        let difY = (Int(y) - (scene.tileY)) * Int(tileSize)
         node.position.x = CGFloat(difX)
         node.position.y = CGFloat(difY)
   
@@ -61,7 +61,7 @@ class AirMonster: Monster {
     
     func move() {
         if (abs(node.position.x) <= CGFloat(tileSize * 2/3) && abs(node.position.y) <= CGFloat(tileSize * 2/3)) {
-            scene.controller?.failLevel()
+            scene?.controller?.failLevel()
         }
         callIndex += 1
         if (callIndex >= callRate) {
@@ -78,5 +78,9 @@ class AirMonster: Monster {
     
     func remove() {
         
+    }
+    
+    func copy() -> Monster {
+        return AirMonster(x: x, y: y, speed: speed, scene: scene!)
     }
 }

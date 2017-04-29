@@ -12,6 +12,7 @@ import UIKit
 
 public extension UIDevice {
     
+    //returns the tile size in points for any particular device
     var width: Double {
         var systemInfo = utsname()
         uname(&systemInfo)

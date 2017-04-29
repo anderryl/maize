@@ -10,10 +10,10 @@ import Foundation
 import SpriteKit
 
 protocol Monster {
-    var x: Double {get}
-    var y: Double {get}
+    var x: Double {get set}
+    var y: Double {get set}
     var node: SKNode {get}
-    var scene: GameScene {get}
+    var scene: GameScene? {get set}
     var tileSize: Double {get}
     var callIndex: Int {get}
     var callRate: Int {get}
@@ -23,4 +23,6 @@ protocol Monster {
     func playerMove(direction: Int)
     
     func remove()
+    
+    func copy() -> Monster
 }

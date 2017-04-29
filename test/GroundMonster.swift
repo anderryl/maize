@@ -13,7 +13,7 @@ class GroundMonster: Monster {
     var x: Double
     var y: Double
     var node: SKNode
-    var scene: GameScene
+    var scene: GameScene?
     var tileSize: Double
     var callIndex: Int = 0
     var callRate: Int
@@ -25,16 +25,16 @@ class GroundMonster: Monster {
     required init(x: Double, y: Double, speed: Double, scene: GameScene) {
         self.x = x
         self.y = y
-        self.scene = scene
         self.callRate = Int(60 * speed)
+        self.scene = scene
         tileX = Int(x)
         tileY = Int(y)
-        tileSize = scene.tileSize
+        tileSize = (scene.tileSize)
         node = SKShapeNode.init(ellipseIn: CGRect.init(x: Int(0 - (tileSize/3)), y: Int(0 - (tileSize/3)), width: Int(tileSize * 2/3), height: Int(tileSize * 2/3)))
         (node as! SKShapeNode).fillColor = UIColor.red
         node.zPosition = 5
-        let difX = (Int(x) - scene.tileX) * Int(tileSize)
-        let difY = (Int(y) - scene.tileY) * Int(tileSize)
+        let difX = (Int(x) - (scene.tileX)) * Int(tileSize)
+        let difY = (Int(y) - (scene.tileY)) * Int(tileSize)
         node.position.x = CGFloat(difX)
         node.position.y = CGFloat(difY)
         scene.addChild(node)
@@ -44,12 +44,12 @@ class GroundMonster: Monster {
     
     func move() {
         if (abs(node.position.x) <= CGFloat(tileSize * 2/3) && abs(node.position.y) <= CGFloat(tileSize * 2/3)) {
-            scene.controller?.failLevel()
+            scene?.controller?.failLevel()
         }
-        let maze = scene.maze
+        let maze = scene?.maze
         if (callIndex >= callRate) {
             callIndex = 0
-            evaluate(maze: maze)
+            evaluate(maze: maze!)
             switch direction {
             case 0:
                 tileY += 1
@@ -126,5 +126,9 @@ class GroundMonster: Monster {
     
     func remove() {
         node.removeFromParent()
+    }
+    
+    func copy() -> Monster {
+        return GroundMonster(x: x, y: y, speed: speed, scene: scene!)
     }
 }
