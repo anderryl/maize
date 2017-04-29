@@ -33,8 +33,10 @@ class GameScene: SKScene {
     var node: SKShapeNode?
     var time: Int?
     var timerLabel: SKLabelNode?
-    var musicPlayer: AVAudioPlayer?
     var mplayer: AVAudioPlayer?
+    var countLoop: Timer?
+    var gameIsPaused: Bool = false
+    var pauseIndex: Int = 0
     
     override func didMove(to view: SKView) {
         //sets up the swipe gesture recognizers for each direction
@@ -87,7 +89,8 @@ class GameScene: SKScene {
         
         //sets and starts the timer to an amount dependant on the level
         time = 60 + (level * 3)
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.countdown), userInfo: nil, repeats: true)
+        
+        initTimer()
         
         //creates the level label seen at the start of each round that says 'Night Blah'
         let levelLabel = SKLabelNode(text: "Night " + level.description)
@@ -137,28 +140,64 @@ class GameScene: SKScene {
         super.init(coder: aDecoder)
     }
     
+    //creates the gameloop and time left countdown timer
+    func initTimer() {
+        countLoop = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.countdown), userInfo: nil, repeats: true)
+    }
+    
+    //method that pauses the game
+    func pause() {
+        countLoop?.invalidate()
+        gameIsPaused = true
+    }
+    
+    //method that unpauses the game
+    func unpause() {
+        initTimer()
+        gameIsPaused = false
+    }
+    
     //called when a down swipe is detected and sets the direction to 2 (down)
     func inputDown() {
-        direction = 2
+        if (!gameIsPaused) {
+            direction = 2
+        }
     }
     //called when a up swipe is detected and sets the direction to 0 (up)
     func inputUp() {
-        direction = 0
+        if (!gameIsPaused) {
+            direction = 0
+        }
     }
-    
+
     //called when a left swipe is detected and sets the direction to 3 (left)
     func inputLeft() {
-        direction = 3
+        if (!gameIsPaused) {
+            direction = 3
+        }
     }
-    
+
     //called when a right swipe is detected and sets the direction to 1 (right)
     func inputRight() {
-        direction = 1
+        if (!gameIsPaused) {
+            direction = 1
+        }
     }
-    
+
     //called when a tap gesture is detected TODO: pauses the game
     func inputPause() {
-        
+        if (pauseIndex >= 3) {
+            pauseIndex = 0
+            if (gameIsPaused) {
+                unpause()
+            }
+            else {
+                pause()
+            }
+        }
+        else {
+            pauseIndex += 3
+        }
     }
     
     //0 up, 1 right, 2 down, 3 left, 4 stop
@@ -171,6 +210,12 @@ class GameScene: SKScene {
     
     //called three times a second that first checks if a move is viable and then executes the move
     func move() {
+        if (pauseIndex > 0) {
+            pauseIndex -= 1
+        }
+        if (gameIsPaused) {
+            return
+        }
         switch direction {
         case 0:
             if (checkMove(x: 0, y: 1)) {
@@ -279,6 +324,9 @@ class GameScene: SKScene {
     
     //calls a 'move' method on all monsters
     func moveMonsters() {
+        if (gameIsPaused) {
+            return
+        }
         monsters?.moveMonsters()
     }
     
@@ -292,7 +340,7 @@ class GameScene: SKScene {
         
     }
     
-    //plays the creepy
+    //plays the creepy music
     func playMusic() {
         let sound = NSDataAsset(name: "BackgroundMusic")
         
