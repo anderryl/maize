@@ -9,6 +9,7 @@
 import Foundation
 
 class MonsterLevel {
+    //a class that represents spawning odds for a type of monster in a particular level
     class Index {
         let monster: Int
         let odds: Int
@@ -22,9 +23,12 @@ class MonsterLevel {
     var squibOdds: Int
     var scene: GameScene
     init(level: Int, scene: GameScene) {
+        //sets attributes depending on arguments
         self.level = level
         squibOdds = 1000 - ((level) * 3/2) - 50
         self.scene = scene
+        //depending on the level will create harder and harder levels every ten levels is a crow level where there are ridiculous numbers of crows and hawks spawned
+        //others are mixed with pumpkins being introduced at level 6, crows at level 10, hawks at level 21, and scarecrows as default
         switch level {
         case 1...5: monsters = [Index(monster: MonsterType.SCARECROW, odds: 1)]
             
@@ -67,6 +71,7 @@ class MonsterLevel {
         }
     }
     
+    //returns a monster depending on the index list
     func getMonster(x: Int, y: Int) -> Monster {
         var possible: [Int] = []
         for ind in monsters {
@@ -76,6 +81,7 @@ class MonsterLevel {
                 x += 1
             }
         }
+        //returns monster from template with positions set depending to the arguments
         switch possible[Int(arc4random_uniform(UInt32(possible.count)))] {
         case 1: return GroundMonster(x: Double(x), y: Double(y), speed: 1/2, scene: scene)
         case 2: return GroundMonster(x: Double(x), y: Double(y), speed: 1/4, scene: scene)

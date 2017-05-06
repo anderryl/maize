@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class MonsterType {
+    //indexes for each type of monster
     static let SCARECROW: Int = 1
     static let PUMPKIN: Int = 2
     static let CROW: Int = 3
