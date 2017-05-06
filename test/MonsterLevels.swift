@@ -23,7 +23,7 @@ class MonsterLevel {
     var scene: GameScene
     init(level: Int, scene: GameScene) {
         self.level = level
-        squibOdds = 1000 - ((level) * 3/2) + 50
+        squibOdds = 1000 - ((level) * 3/2) - 50
         self.scene = scene
         switch level {
         case 1...5: monsters = [Index(monster: MonsterType.SCARECROW, odds: 1)]

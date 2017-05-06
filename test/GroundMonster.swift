@@ -22,7 +22,9 @@ class GroundMonster: Monster {
     var speed: Double // in seconds per tile
     var direction: Int = 0
     
+    //represents a monster that is on the ground (so far scarecrow and pumpkin)
     required init(x: Double, y: Double, speed: Double, scene: GameScene) {
+        //sets its attributes according to arguments
         self.x = x
         self.y = y
         self.callRate = Int(60 * speed)
@@ -30,6 +32,7 @@ class GroundMonster: Monster {
         tileX = Int(x)
         tileY = Int(y)
         tileSize = (scene.tileSize)
+        //creates a red circle and adds it to the scene in the appropriate position
         node = SKShapeNode.init(ellipseIn: CGRect.init(x: Int(0 - (tileSize/3)), y: Int(0 - (tileSize/3)), width: Int(tileSize * 2/3), height: Int(tileSize * 2/3)))
         (node as! SKShapeNode).fillColor = UIColor.red
         node.zPosition = 5
@@ -41,11 +44,13 @@ class GroundMonster: Monster {
         self.speed = speed
     }
     
-    
+    //required method of monsters that when called moves the monster
     func move() {
+        //if the monster and the player occupy the same space fail the level
         if (abs(node.position.x) <= CGFloat(tileSize * 2/3) && abs(node.position.y) <= CGFloat(tileSize * 2/3)) {
             scene?.controller?.failLevel()
         }
+        //move in a direction depending on the direction attribute
         let maze = scene?.maze
         if (callIndex >= callRate) {
             callIndex = 0
@@ -67,16 +72,15 @@ class GroundMonster: Monster {
                 break
             }
             
+            //sets its new position
             x = Double(tileX)
             y = Double(tileY)
         }
-        
+        //increments the callIndex
         callIndex += 1
-        /*if (Int(x) == scene.tileX && Int(y) == scene.tileY) {
-            scene.controller?.failLevel()
-        }*/
     }
     
+    //method that decides where to move
     func evaluate(maze: [[UInt8]]) {
         var possible = [Int]()
         var count: UInt32 = 0
@@ -96,10 +100,24 @@ class GroundMonster: Monster {
             possible.append(3)
             count += 1
         }
+        
+        if (possible.contains(direction)) {
+            if (possible.contains(((direction - 2) * -1))) {
+                var index = 0
+                for int in possible {
+                    if (int == ((direction - 2) * -1)) {
+                        possible.remove(at: index)
+                        count -= 1
+                    }
+                    index += 1
+                }
+            }
+        }
         let index = Int(arc4random_uniform(count))
         direction = possible[index]
     }
     
+    //
     func playerMove(direction: Int) {
         switch direction {
         case 0:

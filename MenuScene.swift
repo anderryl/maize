@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 class MenuScene: SKScene {
-    
+    //not implemented because it doesn't work very well
     var playButton: SKLabelNode?
     var controller: GameViewController?
     var tapRecognizer: UITapGestureRecognizer?
@@ -38,7 +38,7 @@ class MenuScene: SKScene {
     override init(size: CGSize) {
         super.init(size: size)
     }
-    
+    //called when the screen is touched
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         controller?.startLevel()
     }
@@ -47,7 +47,7 @@ class MenuScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    //called to cause the level to start
     func startLevel() {
         controller?.startLevel()
     }

@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
     }
     
-    // MARK: - Core Data stack
+    
 
 }
 

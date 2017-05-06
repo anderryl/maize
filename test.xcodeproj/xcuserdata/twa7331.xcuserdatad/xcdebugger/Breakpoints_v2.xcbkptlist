@@ -10,21 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "test/MazeGenerator.swift"
-            timestampString = "512444521.953691"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "test/MazeGenerator.swift"
-            timestampString = "512444521.953691"
+            timestampString = "515801345.186534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -38,11 +24,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "test/MazeGenerator.swift"
-            timestampString = "512444521.953691"
+            timestampString = "515801345.186534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90">
+            startingLineNumber = "131"
+            endingLineNumber = "131">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test/MazeGenerator.swift"
+            timestampString = "515801345.186534"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96">
             <Locations>
                <Location
                   shouldBeEnabled = "No"

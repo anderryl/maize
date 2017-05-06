@@ -12,6 +12,7 @@ class MazeGenerator {
     var passage: [(Int, Int)] = [(Int, Int)]()
     var maze: [[UInt8]] = [[UInt8]]()
     
+    //starts out with a maze full of walls
     init() {
         var x = 0
         while x < 1000 {
@@ -29,6 +30,8 @@ class MazeGenerator {
         generate()
     }
     
+    //starts at the origin and randomly branches off from there
+    //once there is more than one passage it begins to randomly select a passages and branch off of it then choose a new one the next time
     func generate() {
         var index = 0
         while passage.count != 0 {
@@ -41,6 +44,7 @@ class MazeGenerator {
         }
     }
     
+    //method called to branch off of a particular point
     func addBranch(x: Int, y: Int) -> Bool {
         var possible: [(Int, Int)] = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         var index = 0
@@ -62,6 +66,7 @@ class MazeGenerator {
         return false
     }
     
+    //returns the state (1 for wall, 0 for passage) of a particular tile in the maze.
     func getState(x: Int, y: Int) -> UInt8 {
         if (0 <= x && x < 1000 && 0 <= y && y < 1000) {
             return maze[x][y]
@@ -71,6 +76,7 @@ class MazeGenerator {
         }
     }
     
+    //returns the maze as a whole
     func getMaze() -> [[UInt8]] {
         return maze
     }
