@@ -33,16 +33,16 @@ class MonsterRegister {
         var i = -10
         while (i < 11) {
             if (dir.0 == 0) {
-                if (scene.getState(x: scene.tileX + i, y: scene.tileY + (dir.1 * 20)) == 0) {
+                if (scene.getState(x: scene.tileX + i, y: scene.tileY + (dir.1 * 10)) == 0) {
                     if (Int(arc4random_uniform(1000)) + 1 >= levelMonsters.squibOdds - 1) {
-                        monsters.append(getNewMonster(x: scene.tileX + i, y: scene.tileY + (dir.1 * 20)))
+                        monsters.append(getNewMonster(x: scene.tileX + i, y: scene.tileY + (dir.1 * 10)))
                     }
                 }
             }
             else {
-                if (scene.getState(x: scene.tileX + (dir.0 * 20), y: scene.tileY + i) == 0) {
+                if (scene.getState(x: scene.tileX + (dir.0 * 10), y: scene.tileY + i) == 0) {
                     if (Int(arc4random_uniform(1000)) + 1 >= levelMonsters.squibOdds - 1) {
-                        monsters.append(getNewMonster(x: scene.tileX + (dir.0 * 20), y: scene.tileY + i))
+                        monsters.append(getNewMonster(x: scene.tileX + (dir.0 * 10), y: scene.tileY + i))
                     }
                 }
             }

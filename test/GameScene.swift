@@ -80,6 +80,9 @@ class GameScene: SKScene {
         player?.run(SKAction.repeatForever(SKAction.sequence([SKAction.run {
             self.moveMonsters()
             }, SKAction.wait(forDuration: 1/60)])))
+        player?.run(SKAction.repeatForever(SKAction.sequence([SKAction.run {
+            self.countdown()
+            }, SKAction.wait(forDuration: 1)])))
         
         //initiated the tile register to keep track of tiles
         map = TileRegister(tileSize: tileSize, scene: self)
@@ -90,7 +93,6 @@ class GameScene: SKScene {
         //sets and starts the timer to an amount dependant on the level
         time = 60 + (level * 3)
         
-        initTimer()
         
         //creates the level label seen at the start of each round that says 'Night Blah'
         let levelLabel = SKLabelNode(text: "Night " + level.description)
@@ -141,9 +143,6 @@ class GameScene: SKScene {
     }
     
     //creates the gameloop and time left countdown timer
-    func initTimer() {
-        countLoop = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GameScene.countdown), userInfo: nil, repeats: true)
-    }
     
     //method that pauses the game
     func pause() {
@@ -153,7 +152,6 @@ class GameScene: SKScene {
     
     //method that unpauses the game
     func unpause() {
-        initTimer()
         gameIsPaused = false
     }
     
@@ -184,7 +182,7 @@ class GameScene: SKScene {
         }
     }
 
-    //called when a tap gesture is detected TODO: pauses the game
+    //called when a tap gesture is detected pauses the game
     func inputPause() {
         if (pauseIndex >= 3) {
             pauseIndex = 0
@@ -332,11 +330,13 @@ class GameScene: SKScene {
     
     //called every second and moves down the timer and calls end if timer is at 0
     func countdown() {
-        time! -= 1
-        if (time == 0) {
-            end()
+        if (!gameIsPaused) {
+            time! -= 1
+            if (time! <= 0) {
+                end()
+            }
+            timerLabel?.text = time?.description
         }
-        timerLabel?.text = time?.description
         
     }
     
@@ -345,11 +345,11 @@ class GameScene: SKScene {
         let sound = NSDataAsset(name: "BackgroundMusic")
         
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
             try AVAudioSession.sharedInstance().setActive(true)
             
             mplayer = try AVAudioPlayer(data: (sound?.data)!, fileTypeHint: AVFileTypeWAVE)
-            
+            mplayer?.volume = 0.33
             mplayer!.play()
             mplayer?.numberOfLoops = -1
         } catch _ as NSError {
