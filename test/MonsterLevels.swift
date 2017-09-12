@@ -25,7 +25,7 @@ class MonsterLevel {
     init(level: Int, scene: GameScene) {
         //sets attributes depending on arguments
         self.level = level
-        squibOdds = 1000 - ((level) * 3/2) - 50
+        squibOdds = 1000 - ((level) * 1/2) - 5
         self.scene = scene
         //depending on the level will create harder and harder levels every ten levels is a crow level where there are ridiculous numbers of crows and hawks spawned
         //others are mixed with pumpkins being introduced at level 6, crows at level 10, hawks at level 21, and scarecrows as default

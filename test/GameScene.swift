@@ -37,6 +37,8 @@ class GameScene: SKScene {
     var countLoop: Timer?
     var gameIsPaused: Bool = false
     var pauseIndex: Int = 0
+    var pauseLabel: SKLabelNode = SKLabelNode(text:
+    "PAUSED")
     
     override func didMove(to view: SKView) {
         //sets up the swipe gesture recognizers for each direction
@@ -120,6 +122,16 @@ class GameScene: SKScene {
         //adds the label to the scene
         addChild(timerLabel!)
         
+        pauseLabel.position.x = 0
+        pauseLabel.position.y = 0
+        pauseLabel.horizontalAlignmentMode = .center
+        pauseLabel.verticalAlignmentMode = .center
+        pauseLabel.fontSize = 100
+        pauseLabel.fontColor = UIColor.black
+        pauseLabel.zPosition = 10
+        addChild(pauseLabel)
+        pauseLabel.run(SKAction.fadeOut(withDuration: 0))
+        
         //starts the creepy music and sets it to a loop
         playMusic()
     }
@@ -148,11 +160,13 @@ class GameScene: SKScene {
     func pause() {
         countLoop?.invalidate()
         gameIsPaused = true
+        pauseLabel.run(SKAction.fadeIn(withDuration: 0.5))
     }
     
     //method that unpauses the game
     func unpause() {
         gameIsPaused = false
+        pauseLabel.run(SKAction.fadeOut(withDuration: 0.5))
     }
     
     //called when a down swipe is detected and sets the direction to 2 (down)
@@ -353,7 +367,7 @@ class GameScene: SKScene {
             mplayer!.play()
             mplayer?.numberOfLoops = -1
         } catch _ as NSError {
-            fatalError("MUSIC NO PLAY! WHAT WRONG WIT ME!?")
+            fatalError("MUSIC NO PLAY, I KILL YOU, I KILL YOU ALL!")
         }
     }
     

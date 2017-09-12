@@ -21,6 +21,7 @@ class GroundMonster: Monster {
     var tileY: Int
     var speed: Double // in seconds per tile
     var direction: Int = 0
+    var AI: MonsterAI
     
     //represents a monster that is on the ground (so far scarecrow and pumpkin)
     required init(x: Double, y: Double, speed: Double, scene: GameScene) {
@@ -42,6 +43,7 @@ class GroundMonster: Monster {
         node.position.y = CGFloat(difY)
         scene.addChild(node)
         self.speed = speed
+        AI = SmartGroundAI(maze: scene.maze)
     }
     
     //required method of monsters that when called moves the monster
@@ -51,10 +53,10 @@ class GroundMonster: Monster {
             scene?.controller?.failLevel()
         }
         //move in a direction depending on the direction attribute
-        let maze = scene?.maze
         if (callIndex >= callRate) {
             callIndex = 0
-            evaluate(maze: maze!)
+            //evaluate(maze: maze!)
+            direction = AI.evaluate(x: tileX, y: tileY, px: (scene?.tileX)!, py: (scene?.tileY)!, dir: direction)
             switch direction {
             case 0:
                 tileY += 1
