@@ -21,7 +21,7 @@ class GameScene: SKScene {
     var monsters: MonsterRegister?
     
     var maze: [[UInt8]] = [[UInt8]]()
-    var tileSize: Double = 170 //a tile size should be 1/5 of the width of the screen
+    var tileSize: Double = 170 * 5/7 //a tile size should be 1/5 of the width of the screen
     var level: Int = 1
     var controller: GameViewController?
     

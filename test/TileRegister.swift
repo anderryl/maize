@@ -20,10 +20,10 @@ class TileRegister {
         self.tileSize = tileSize
         self.scene = scene
         //loops through and creates tiles to cover the whole screen
-        var x = -4
-        while x < 5 {
-            var y = -6
-            while y < 7 {
+        var x = -9
+        while x < 10 {
+            var y = -11
+            while y < 12 {
                 addTile(y: y, x: x, state: getState(x: scene.tileX + x, y: scene.tileY + y))
                 y += 1
             }
@@ -38,8 +38,8 @@ class TileRegister {
     
     //creates a new row of tiles as the player moves into a region that is not yet loaded
     func appendTileRow(direction: Int, tileX: Int, tileY: Int) {
-        let sizeX = 3
-        let sizeY = 5
+        let sizeX = 7
+        let sizeY = 11
         if (direction == 0) {
             var y = -1 * sizeX
             while y < sizeX + 1 {
@@ -76,15 +76,18 @@ class TileRegister {
                 }
             }
         }
+        /*for tile in map {
+            if (abs(tile.ground.position.x) > CGFloat(tileSize * 10))
+        } */
         var x: Int = 0
         var nMap = [Tile]()
         //deletes tiles that are no longer in the view
         while x < map.count {
-            if abs(map[x].getGround().position.x) > CGFloat(tileSize * 7) {
+            if abs(map[x].getGround().position.x) > CGFloat(tileSize * 10) {
                 map[x].getGround().removeFromParent()
             }
             else {
-                if abs(map[x].getGround().position.y) > CGFloat(tileSize * 11) {
+                if abs(map[x].getGround().position.y) > CGFloat(tileSize * 13) {
                     map[x].getGround().run(SKAction.removeFromParent())
                 }
                 else {
