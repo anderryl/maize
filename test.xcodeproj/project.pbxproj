@@ -15,6 +15,8 @@
 		C278FD101F6AE3D9005C1800 /* SmartTeleportAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278FD0F1F6AE3D9005C1800 /* SmartTeleportAI.swift */; };
 		C278FD121F6B0118005C1800 /* StupidTeleportAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278FD111F6B0118005C1800 /* StupidTeleportAI.swift */; };
 		C278FD141F6B026C005C1800 /* TeleportAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278FD131F6B026C005C1800 /* TeleportAI.swift */; };
+		C278FD161F6B1E7A005C1800 /* HologramMonster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278FD151F6B1E7A005C1800 /* HologramMonster.swift */; };
+		C278FD191F6B1FA1005C1800 /* SmartHologramAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278FD181F6B1FA1005C1800 /* SmartHologramAI.swift */; };
 		F203B4DC1E568FC000B3F277 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203B4DB1E568FC000B3F277 /* Tile.swift */; };
 		F20615011E884D0C00D11687 /* DeviceCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20615001E884D0C00D11687 /* DeviceCheck.swift */; };
 		F20615051E88969300D11687 /* TileRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20615041E88969300D11687 /* TileRegister.swift */; };
@@ -65,6 +67,8 @@
 		C278FD0F1F6AE3D9005C1800 /* SmartTeleportAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartTeleportAI.swift; sourceTree = "<group>"; };
 		C278FD111F6B0118005C1800 /* StupidTeleportAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StupidTeleportAI.swift; sourceTree = "<group>"; };
 		C278FD131F6B026C005C1800 /* TeleportAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeleportAI.swift; sourceTree = "<group>"; };
+		C278FD151F6B1E7A005C1800 /* HologramMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HologramMonster.swift; sourceTree = "<group>"; };
+		C278FD181F6B1FA1005C1800 /* SmartHologramAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartHologramAI.swift; sourceTree = "<group>"; };
 		F203B4DB1E568FC000B3F277 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F20615001E884D0C00D11687 /* DeviceCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCheck.swift; sourceTree = "<group>"; };
 		F20615041E88969300D11687 /* TileRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileRegister.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -152,6 +156,15 @@
 			name = "Teleport Monster";
 			sourceTree = "<group>";
 		};
+		C278FD171F6B1F61005C1800 /* Hologram Monster */ = {
+			isa = PBXGroup;
+			children = (
+				C278FD151F6B1E7A005C1800 /* HologramMonster.swift */,
+				C278FD181F6B1FA1005C1800 /* SmartHologramAI.swift */,
+			);
+			name = "Hologram Monster";
+			sourceTree = "<group>";
+		};
 		F27483241E4FBB2500AB589B = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +235,7 @@
 				C278FD0E1F6AE2EF005C1800 /* Teleport Monster */,
 				C2278DB01F6A1E3B00EC8A75 /* Incorporeal Monster */,
 				C2278DAB1F6A187F00EC8A75 /* Ground Monster */,
+				C278FD171F6B1F61005C1800 /* Hologram Monster */,
 				F2A6C9191EAD426800B71429 /* MonsterType.swift */,
 				F20B59A01F6775CB001C6791 /* MonsterAI.swift */,
 			);
@@ -394,7 +408,9 @@
 				C2278DAF1F6A1DBE00EC8A75 /* IncorporealMonster.swift in Sources */,
 				C278FD101F6AE3D9005C1800 /* SmartTeleportAI.swift in Sources */,
 				F274C3351E8C9B9100A77306 /* GroundMonster.swift in Sources */,
+				C278FD161F6B1E7A005C1800 /* HologramMonster.swift in Sources */,
 				F203B4DC1E568FC000B3F277 /* Tile.swift in Sources */,
+				C278FD191F6B1FA1005C1800 /* SmartHologramAI.swift in Sources */,
 				F20615011E884D0C00D11687 /* DeviceCheck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

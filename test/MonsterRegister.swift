@@ -82,6 +82,12 @@ class MonsterRegister {
                 if (abs(Int(monster.y) - scene.tileY) > 30) {
                     monster.remove()
                 }
+                else if (monster is HologramMonster) {
+                    let g = (monster as! HologramMonster)
+                    if (g.count > g.cap) {
+                        monster.remove()
+                    }
+                }
                 else {
                     newMonsters.append(monster)
                 }

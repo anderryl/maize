@@ -23,7 +23,7 @@ class TileRegister {
         var x = -5
         while x < 6 {
             var y = -8
-            while y < 8 {
+            while y < 9 {
                 addTile(y: y, x: x, state: getState(x: scene.tileX + x, y: scene.tileY + y))
                 y += 1
             }
