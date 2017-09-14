@@ -12,9 +12,11 @@ import SpriteKit
 //represents a tile that is seen on the screen
 class Tile {
     var ground: SKNode;
+    var x: Int
+    var y: Int
     
     //called to create the tile
-    init(state: UInt8, size: CGRect, scene: SKScene) {
+    init(state: UInt8, size: CGRect, scene: SKScene, x: Int, y: Int) {
         //Initiates the sprite as a square with unrounded corners
         ground = SKShapeNode.init(rect: size, cornerRadius: 0);
         (ground as! SKShapeNode).fillColor = UIColor.brown;
@@ -32,7 +34,8 @@ class Tile {
         }
         //adds the node to the scene.
         scene.addChild(ground)
-        
+        self.x = x
+        self.y = y
     }
     
     //deinitilizes the tile
@@ -43,10 +46,22 @@ class Tile {
     //the tile moves when the player 'moves'
     func moveX(amount: Double, duration: TimeInterval) {
         ground.run(SKAction.moveBy(x: CGFloat(amount), y: CGFloat(0), duration: duration));
+        if (amount > 0) {
+            x += 1
+        }
+        else {
+            x -= 1
+        }
     }
     
     func moveY(amount: Double, duration: TimeInterval) {
         ground.run(SKAction.moveBy(x: CGFloat(0), y: CGFloat(amount), duration: duration));
+        if (amount > 0) {
+            y += 1
+        }
+        else {
+            y -= 1
+        }
     }
     
     //returns the node that this Tile helps represent

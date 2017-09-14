@@ -38,8 +38,8 @@ class TileRegister {
     
     //creates a new row of tiles as the player moves into a region that is not yet loaded
     func appendTileRow(direction: Int, tileX: Int, tileY: Int) {
-        let sizeX = 7
-        let sizeY = 11
+        let sizeX = 4
+        let sizeY = 7
         if (direction == 0) {
             var y = -1 * sizeX
             while y < sizeX + 1 {
@@ -76,32 +76,23 @@ class TileRegister {
                 }
             }
         }
-        /*for tile in map {
-            if (abs(tile.ground.position.x) > CGFloat(tileSize * 10))
-        } */
-        var x: Int = 0
         var nMap = [Tile]()
-        //deletes tiles that are no longer in the view
-        while x < map.count {
-            if abs(map[x].getGround().position.x) > CGFloat(tileSize * 10) {
-                map[x].getGround().removeFromParent()
+        for tile in map {
+            if (abs(tile.x) > 5 || abs(tile.y) > 6) {
+                tile.getGround().removeFromParent()
             }
             else {
-                if abs(map[x].getGround().position.y) > CGFloat(tileSize * 13) {
-                    map[x].getGround().run(SKAction.removeFromParent())
-                }
-                else {
-                    nMap.append(map[x])
-                }
+                nMap.append(tile)
             }
-            x += 1
+            
         }
         map = nMap
+        
     }
     
     //method that adds a new tile at a given coordinate
     func addTile(y: Int, x: Int, state: UInt8) {
-        map.append(Tile(state: state, size: CGRect.init(x: (Double(x) * tileSize - tileSize/2), y: Double(y) * tileSize - tileSize/2, width: tileSize, height: tileSize), scene: scene));
+        map.append(Tile(state: state, size: CGRect.init(x: (Double(x) * tileSize - tileSize/2), y: Double(y) * tileSize - tileSize/2, width: tileSize, height: tileSize), scene: scene, x: x, y: y));
         
     }
     

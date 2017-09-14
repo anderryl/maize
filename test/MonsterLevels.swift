@@ -30,44 +30,74 @@ class MonsterLevel {
         //depending on the level will create harder and harder levels every ten levels is a crow level where there are ridiculous numbers of crows and hawks spawned
         //others are mixed with pumpkins being introduced at level 6, crows at level 10, hawks at level 21, and scarecrows as default
         switch level {
-        case 1...5: monsters = [Index(monster: MonsterType.SCARECROW, odds: 1)]
+        case 1...4: monsters = [Index(monster: MonsterType.SCARECROW, odds: 100)]
             
-        case 6...9: monsters = [Index(monster: MonsterType.SCARECROW, odds: 1), Index(monster: MonsterType.PUMPKIN, odds: 1)]
+        case 5: monsters = [Index(monster: MonsterType.GHOST, odds: 100)]
             
-        case 10: monsters = [Index(monster: MonsterType.CROW, odds: 1)]; squibOdds = 850
+        case 6...9: monsters = [Index(monster: MonsterType.SCARECROW, odds: 50), Index(monster: MonsterType.PUMPKIN, odds: 50)]
             
-        case 11...19: monsters = [Index(monster: MonsterType.SCARECROW, odds: 1), Index(monster: MonsterType.PUMPKIN, odds: 1), Index(monster: MonsterType.CROW, odds: 1)]
+        case 10: monsters = [Index(monster: MonsterType.CROW, odds: 100)]; squibOdds = 850
             
-        case 20: monsters = [Index(monster: MonsterType.CROW, odds: 1)]; squibOdds = 850
+        case 11...14: monsters = [Index(monster: MonsterType.SCARECROW, odds: 50), Index(monster: MonsterType.PUMPKIN, odds: 40), Index(monster: MonsterType.CROW, odds: 10)]
+        
+        case 15: monsters = [Index(monster: MonsterType.GHOST, odds: 100)]
             
-        case 21...29: monsters = [Index(monster: MonsterType.SCARECROW, odds: 2), Index(monster: MonsterType.PUMPKIN, odds: 5), Index(monster: MonsterType.CROW, odds: 3), Index(monster: MonsterType.HAWK, odds: 1)]
+        case 16...19: monsters = [Index(monster: MonsterType.SCARECROW, odds: 50), Index(monster: MonsterType.PUMPKIN, odds: 40), Index(monster: MonsterType.CROW, odds: 10)]
             
-        case 30: monsters = [Index(monster: MonsterType.HAWK, odds: 1)]; squibOdds = 900
+        case 20: monsters = [Index(monster: MonsterType.CROW, odds: 100)]; squibOdds = 850
             
-        case 31...39: monsters = [Index(monster: MonsterType.SCARECROW, odds: 2), Index(monster: MonsterType.PUMPKIN, odds: 5), Index(monster: MonsterType.CROW, odds: 3), Index(monster: MonsterType.HAWK, odds: 1)]
+        case 21...24: monsters = [Index(monster: MonsterType.SCARECROW, odds: 40), Index(monster: MonsterType.PUMPKIN, odds: 40), Index(monster: MonsterType.CROW, odds: 15), Index(monster: MonsterType.HAWK, odds: 5)]
+            
+        case 25: monsters = [Index(monster: MonsterType.GHOST, odds: 100)]
+            
+        case 26...29: monsters = [Index(monster: MonsterType.SCARECROW, odds: 40), Index(monster: MonsterType.PUMPKIN, odds: 40), Index(monster: MonsterType.CROW, odds: 15), Index(monster: MonsterType.HAWK, odds: 5)]
+            
+        case 30: monsters = [Index(monster: MonsterType.HAWK, odds: 100)]; squibOdds = 900
+            
+        case 31...34: monsters = [Index(monster: MonsterType.SCARECROW, odds: 2), Index(monster: MonsterType.PUMPKIN, odds: 5), Index(monster: MonsterType.CROW, odds: 3), Index(monster: MonsterType.HAWK, odds: 1)]
+            
+        case 35: monsters = [Index(monster: MonsterType.GHOST, odds: 75), Index(monster: MonsterType.DEMON, odds: 25)]
+        
+        case 36...39: monsters = [Index(monster: MonsterType.SCARECROW, odds: 2), Index(monster: MonsterType.PUMPKIN, odds: 5), Index(monster: MonsterType.CROW, odds: 3), Index(monster: MonsterType.HAWK, odds: 1)]
             
         case 40: monsters = [Index(monster: MonsterType.HAWK, odds: 1)]; squibOdds = 850
             
-        case 41...49: monsters = [Index(monster: MonsterType.SCARECROW, odds: 2), Index(monster: MonsterType.PUMPKIN, odds: 5), Index(monster: MonsterType.CROW, odds: 3), Index(monster: MonsterType.HAWK, odds: 1)]
+        case 41...44: monsters = [Index(monster: MonsterType.SCARECROW, odds: 2), Index(monster: MonsterType.PUMPKIN, odds: 5), Index(monster: MonsterType.CROW, odds: 3), Index(monster: MonsterType.HAWK, odds: 1)]
             
-        case 50: monsters = [Index(monster: MonsterType.HAWK, odds: 1), Index(monster: MonsterType.CROW, odds: 2)]; squibOdds = 750
+        case 45: monsters = [Index(monster: MonsterType.GHOST, odds: 50), Index(monster: MonsterType.DEMON, odds: 50)]
             
-        case 51...59: monsters = [Index(monster: MonsterType.SCARECROW, odds: 1), Index(monster: MonsterType.PUMPKIN, odds: 5), Index(monster: MonsterType.CROW, odds: 1), Index(monster: MonsterType.HAWK, odds: 3)]
+        case 46...49: monsters = [Index(monster: MonsterType.SCARECROW, odds: 30), Index(monster: MonsterType.PUMPKIN, odds: 30), Index(monster: MonsterType.CROW, odds: 10), Index(monster: MonsterType.HAWK, odds: 10), Index(monster: MonsterType.GHOST, odds: 10), Index(monster: MonsterType.DEMON, odds: 10)]
             
-        case 60: monsters = [Index(monster: MonsterType.HAWK, odds: 1), Index(monster: MonsterType.CROW, odds: 2)]; squibOdds = 700
+        case 50: monsters = [Index(monster: MonsterType.HAWK, odds: 33), Index(monster: MonsterType.CROW, odds: 67)]; squibOdds = 750
             
-        case 61...69: monsters = [Index(monster: MonsterType.SCARECROW, odds: 1), Index(monster: MonsterType.PUMPKIN, odds: 5), Index(monster: MonsterType.CROW, odds: 1), Index(monster: MonsterType.HAWK, odds: 3)]
-            
-        case 70: monsters = [Index(monster: MonsterType.HAWK, odds: 1), Index(monster: MonsterType.CROW, odds: 2)]; squibOdds = 680
+        case 51...54: monsters = [Index(monster: MonsterType.SCARECROW, odds: 20), Index(monster: MonsterType.PUMPKIN, odds: 20), Index(monster: MonsterType.CROW, odds: 10), Index(monster: MonsterType.HAWK, odds: 10), Index(monster: MonsterType.GHOST, odds: 20), Index(monster: MonsterType.DEMON, odds: 20)]
         
-        case 71...79: monsters = [Index(monster: MonsterType.SCARECROW, odds: 1), Index(monster: MonsterType.PUMPKIN, odds: 5), Index(monster: MonsterType.CROW, odds: 1), Index(monster: MonsterType.HAWK, odds: 3)]
+        case 55: monsters = [Index(monster: MonsterType.GHOST, odds: 40), Index(monster: MonsterType.DEMON, odds: 60)]
+        
+        case 56...59: monsters = [Index(monster: MonsterType.SCARECROW, odds: 25), Index(monster: MonsterType.PUMPKIN, odds: 20), Index(monster: MonsterType.CROW, odds: 5), Index(monster: MonsterType.HAWK, odds: 15), Index(monster: MonsterType.GHOST, odds: 10), Index(monster: MonsterType.DEMON, odds: 25)]
+            
+        case 60: monsters = [Index(monster: MonsterType.HAWK, odds: 33), Index(monster: MonsterType.CROW, odds: 67)]; squibOdds = 700
+            
+        case 61...64: monsters = [Index(monster: MonsterType.SCARECROW, odds: 25), Index(monster: MonsterType.PUMPKIN, odds: 22), Index(monster: MonsterType.CROW, odds: 5), Index(monster: MonsterType.HAWK, odds: 15), Index(monster: MonsterType.GHOST, odds: 6), Index(monster: MonsterType.DEMON, odds: 27)]
+            
+        case 65: monsters = [Index(monster: MonsterType.GHOST, odds: 40), Index(monster: MonsterType.DEMON, odds: 60)]
+            
+        case 66...69: monsters = [Index(monster: MonsterType.SCARECROW, odds: 25), Index(monster: MonsterType.PUMPKIN, odds: 22), Index(monster: MonsterType.CROW, odds: 5), Index(monster: MonsterType.HAWK, odds: 15), Index(monster: MonsterType.GHOST, odds: 6), Index(monster: MonsterType.DEMON, odds: 27)]
+            
+        case 70: monsters = [Index(monster: MonsterType.HAWK, odds: 33), Index(monster: MonsterType.CROW, odds: 67)]; squibOdds = 680
+        
+        case 71...74: monsters = [Index(monster: MonsterType.SCARECROW, odds: 25), Index(monster: MonsterType.PUMPKIN, odds: 25), Index(monster: MonsterType.CROW, odds: 5), Index(monster: MonsterType.HAWK, odds: 15), Index(monster: MonsterType.DEMON, odds: 30)]
+            
+        case 75: monsters = [Index(monster: MonsterType.GHOST, odds: 35), Index(monster: MonsterType.DEMON, odds: 65)]
+            
+        case 76...79: monsters = [Index(monster: MonsterType.SCARECROW, odds: 25), Index(monster: MonsterType.PUMPKIN, odds: 25), Index(monster: MonsterType.CROW, odds: 5), Index(monster: MonsterType.HAWK, odds: 15), Index(monster: MonsterType.DEMON, odds: 30)]
             
         case 80: monsters = [Index(monster: MonsterType.HAWK, odds: 1), Index(monster: MonsterType.CROW, odds: 2)]; squibOdds = 650
             
         case 81...100: monsters = [Index(monster: MonsterType.SCARECROW, odds: 1), Index(monster: MonsterType.PUMPKIN, odds: 5), Index(monster: MonsterType.CROW, odds: 1), Index(monster: MonsterType.HAWK, odds: 3)]
             
-        case 100...1000: monsters = [Index(monster: MonsterType.HAWK, odds: 1), Index(monster: MonsterType.CROW, odds: 2)]; squibOdds = 500
-        default: break
+        case 100...1000: monsters = [Index(monster: MonsterType.HAWK, odds: 50), Index(monster: MonsterType.DEMON, odds: 50)]
+        default: monsters = [Index(monster: MonsterType.GHOST, odds: 100)]
         }
     }
     
@@ -88,7 +118,7 @@ class MonsterLevel {
         case 3: return AirMonster(x: Double(x), y: Double(y), speed: 1/3, scene: scene) //crow
         case 4: return AirMonster(x: Double(x), y: Double(y), speed: 1/10, scene: scene) //hawk
         case 5: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "smart", scene: scene) //ghost
-        default: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "stupid", scene: scene)
+        default: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "stupid", scene: scene) //demon
         }
     }
 }
