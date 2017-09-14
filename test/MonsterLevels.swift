@@ -118,7 +118,9 @@ class MonsterLevel {
         case 3: return AirMonster(x: Double(x), y: Double(y), speed: 1/3, scene: scene) //crow
         case 4: return AirMonster(x: Double(x), y: Double(y), speed: 1/10, scene: scene) //hawk
         case 5: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "smart", scene: scene) //ghost
-        default: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "stupid", scene: scene) //demon
+        case 6: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "stupid", scene: scene) //demon
+        case 7: return TeleportMonster(x: Double(x), y: Double(y), speed: 0, ai: "stupid", scene: scene)
+        default: return TeleportMonster(x: Double(x), y: Double(y), speed: 1/3, ai: "smart", scene: scene)
         }
     }
 }

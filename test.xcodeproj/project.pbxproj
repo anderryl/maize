@@ -11,12 +11,15 @@
 		C2278DAF1F6A1DBE00EC8A75 /* IncorporealMonster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2278DAE1F6A1DBE00EC8A75 /* IncorporealMonster.swift */; };
 		C2278DB21F6A1E6500EC8A75 /* SmartIncorporealAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2278DB11F6A1E6500EC8A75 /* SmartIncorporealAI.swift */; };
 		C2278DB41F6A21DA00EC8A75 /* StupidIncorporealAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2278DB31F6A21DA00EC8A75 /* StupidIncorporealAI.swift */; };
+		C278FD0D1F6AE2EA005C1800 /* TeleportMonster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278FD0C1F6AE2EA005C1800 /* TeleportMonster.swift */; };
+		C278FD101F6AE3D9005C1800 /* SmartTeleportAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278FD0F1F6AE3D9005C1800 /* SmartTeleportAI.swift */; };
+		C278FD121F6B0118005C1800 /* StupidTeleportAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278FD111F6B0118005C1800 /* StupidTeleportAI.swift */; };
+		C278FD141F6B026C005C1800 /* TeleportAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278FD131F6B026C005C1800 /* TeleportAI.swift */; };
 		F203B4DC1E568FC000B3F277 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203B4DB1E568FC000B3F277 /* Tile.swift */; };
 		F20615011E884D0C00D11687 /* DeviceCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20615001E884D0C00D11687 /* DeviceCheck.swift */; };
 		F20615051E88969300D11687 /* TileRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20615041E88969300D11687 /* TileRegister.swift */; };
 		F20B59A11F6775CB001C6791 /* MonsterAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20B59A01F6775CB001C6791 /* MonsterAI.swift */; };
 		F20B59A31F677714001C6791 /* SmartGroundAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20B59A21F677714001C6791 /* SmartGroundAI.swift */; };
-		F2261E3C1F3F6FEC00EDF8BA /* SpecialMonster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2261E3B1F3F6FEC00EDF8BA /* SpecialMonster.swift */; };
 		F236BE6A1E8B434300AEA709 /* MazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236BE691E8B434300AEA709 /* MazeGenerator.swift */; };
 		F27483311E4FBB2500AB589B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27483301E4FBB2500AB589B /* AppDelegate.swift */; };
 		F27483371E4FBB2500AB589B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27483361E4FBB2500AB589B /* GameScene.swift */; };
@@ -58,12 +61,15 @@
 		C2278DAE1F6A1DBE00EC8A75 /* IncorporealMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncorporealMonster.swift; sourceTree = "<group>"; };
 		C2278DB11F6A1E6500EC8A75 /* SmartIncorporealAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartIncorporealAI.swift; sourceTree = "<group>"; };
 		C2278DB31F6A21DA00EC8A75 /* StupidIncorporealAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StupidIncorporealAI.swift; sourceTree = "<group>"; };
+		C278FD0C1F6AE2EA005C1800 /* TeleportMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeleportMonster.swift; sourceTree = "<group>"; };
+		C278FD0F1F6AE3D9005C1800 /* SmartTeleportAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartTeleportAI.swift; sourceTree = "<group>"; };
+		C278FD111F6B0118005C1800 /* StupidTeleportAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StupidTeleportAI.swift; sourceTree = "<group>"; };
+		C278FD131F6B026C005C1800 /* TeleportAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeleportAI.swift; sourceTree = "<group>"; };
 		F203B4DB1E568FC000B3F277 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F20615001E884D0C00D11687 /* DeviceCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCheck.swift; sourceTree = "<group>"; };
 		F20615041E88969300D11687 /* TileRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileRegister.swift; sourceTree = "<group>"; usesTabs = 0; };
 		F20B59A01F6775CB001C6791 /* MonsterAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterAI.swift; sourceTree = "<group>"; };
 		F20B59A21F677714001C6791 /* SmartGroundAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartGroundAI.swift; sourceTree = "<group>"; };
-		F2261E3B1F3F6FEC00EDF8BA /* SpecialMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpecialMonster.swift; path = testTests/SpecialMonster.swift; sourceTree = SOURCE_ROOT; };
 		F236BE691E8B434300AEA709 /* MazeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeGenerator.swift; sourceTree = "<group>"; };
 		F274832D1E4FBB2500AB589B /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F27483301E4FBB2500AB589B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = test/AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +141,17 @@
 			name = "Incorporeal Monster";
 			sourceTree = "<group>";
 		};
+		C278FD0E1F6AE2EF005C1800 /* Teleport Monster */ = {
+			isa = PBXGroup;
+			children = (
+				C278FD0C1F6AE2EA005C1800 /* TeleportMonster.swift */,
+				C278FD0F1F6AE3D9005C1800 /* SmartTeleportAI.swift */,
+				C278FD111F6B0118005C1800 /* StupidTeleportAI.swift */,
+				C278FD131F6B026C005C1800 /* TeleportAI.swift */,
+			);
+			name = "Teleport Monster";
+			sourceTree = "<group>";
+		};
 		F27483241E4FBB2500AB589B = {
 			isa = PBXGroup;
 			children = (
@@ -201,8 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				F274C3321E8C99ED00A77306 /* Monster.swift */,
-				F2261E3B1F3F6FEC00EDF8BA /* SpecialMonster.swift */,
 				F2A6C9171EAD1B3600B71429 /* AirMonster.swift */,
+				C278FD0E1F6AE2EF005C1800 /* Teleport Monster */,
 				C2278DB01F6A1E3B00EC8A75 /* Incorporeal Monster */,
 				C2278DAB1F6A187F00EC8A75 /* Ground Monster */,
 				F2A6C9191EAD426800B71429 /* MonsterType.swift */,
@@ -355,24 +372,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2261E3C1F3F6FEC00EDF8BA /* SpecialMonster.swift in Sources */,
 				F27483371E4FBB2500AB589B /* GameScene.swift in Sources */,
 				F28E40631EA6EC4F00EDA2F1 /* MonsterRegister.swift in Sources */,
 				F28E40651EA8472E00EDA2F1 /* MenuScene.swift in Sources */,
 				F2A6C9181EAD1B3600B71429 /* AirMonster.swift in Sources */,
 				F2A6C91A1EAD426800B71429 /* MonsterType.swift in Sources */,
 				C2278DB21F6A1E6500EC8A75 /* SmartIncorporealAI.swift in Sources */,
+				C278FD121F6B0118005C1800 /* StupidTeleportAI.swift in Sources */,
 				F274C3331E8C99ED00A77306 /* Monster.swift in Sources */,
 				F27483391E4FBB2500AB589B /* GameViewController.swift in Sources */,
 				C2278DB41F6A21DA00EC8A75 /* StupidIncorporealAI.swift in Sources */,
 				F20615051E88969300D11687 /* TileRegister.swift in Sources */,
 				F20B59A11F6775CB001C6791 /* MonsterAI.swift in Sources */,
+				C278FD141F6B026C005C1800 /* TeleportAI.swift in Sources */,
 				F27483311E4FBB2500AB589B /* AppDelegate.swift in Sources */,
 				C2278DAD1F6A18B500EC8A75 /* StupidGroundAI.swift in Sources */,
 				F2A6C91C1EAD45B500B71429 /* MonsterLevels.swift in Sources */,
 				F236BE6A1E8B434300AEA709 /* MazeGenerator.swift in Sources */,
 				F20B59A31F677714001C6791 /* SmartGroundAI.swift in Sources */,
+				C278FD0D1F6AE2EA005C1800 /* TeleportMonster.swift in Sources */,
 				C2278DAF1F6A1DBE00EC8A75 /* IncorporealMonster.swift in Sources */,
+				C278FD101F6AE3D9005C1800 /* SmartTeleportAI.swift in Sources */,
 				F274C3351E8C9B9100A77306 /* GroundMonster.swift in Sources */,
 				F203B4DC1E568FC000B3F277 /* Tile.swift in Sources */,
 				F20615011E884D0C00D11687 /* DeviceCheck.swift in Sources */,

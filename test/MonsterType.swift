@@ -17,5 +17,7 @@ class MonsterType {
     static let HAWK: Int = 4
     static let DEMON: Int = 5
     static let GHOST: Int = 6
+    static let FLICKER: Int = 7
+    static let ZOMBIE: Int = 8
 }
 

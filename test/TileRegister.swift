@@ -20,10 +20,10 @@ class TileRegister {
         self.tileSize = tileSize
         self.scene = scene
         //loops through and creates tiles to cover the whole screen
-        var x = -9
-        while x < 10 {
-            var y = -11
-            while y < 12 {
+        var x = -5
+        while x < 6 {
+            var y = -8
+            while y < 8 {
                 addTile(y: y, x: x, state: getState(x: scene.tileX + x, y: scene.tileY + y))
                 y += 1
             }
@@ -38,8 +38,8 @@ class TileRegister {
     
     //creates a new row of tiles as the player moves into a region that is not yet loaded
     func appendTileRow(direction: Int, tileX: Int, tileY: Int) {
-        let sizeX = 4
-        let sizeY = 7
+        let sizeX = 5
+        let sizeY = 8
         if (direction == 0) {
             var y = -1 * sizeX
             while y < sizeX + 1 {
@@ -77,16 +77,19 @@ class TileRegister {
             }
         }
         var nMap = [Tile]()
+        var x = 0
         for tile in map {
-            if (abs(tile.x) > 5 || abs(tile.y) > 6) {
+            if (abs(tile.x) > 5 || abs(tile.y) > 8) {
                 tile.getGround().removeFromParent()
             }
             else {
                 nMap.append(tile)
             }
+            x += 1
             
         }
         map = nMap
+        
         
     }
     
