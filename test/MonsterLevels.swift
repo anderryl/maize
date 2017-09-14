@@ -83,10 +83,12 @@ class MonsterLevel {
         }
         //returns monster from template with positions set depending to the arguments
         switch possible[Int(arc4random_uniform(UInt32(possible.count)))] {
-        case 1: return GroundMonster(x: Double(x), y: Double(y), speed: 1/2, scene: scene)
-        case 2: return GroundMonster(x: Double(x), y: Double(y), speed: 1/4, scene: scene)
-        case 3: return AirMonster(x: Double(x), y: Double(y), speed: 1/3, scene: scene)
-        default: return AirMonster(x: Double(x), y: Double(y), speed: 1/10, scene: scene)
+        case 1: return GroundMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "smart", scene: scene) //scarecrow
+        case 2: return GroundMonster(x: Double(x), y: Double(y), speed: 1/4, ai: "stupid", scene: scene) //pumpkin
+        case 3: return AirMonster(x: Double(x), y: Double(y), speed: 1/3, scene: scene) //crow
+        case 4: return AirMonster(x: Double(x), y: Double(y), speed: 1/10, scene: scene) //hawk
+        case 5: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "smart", scene: scene) //ghost
+        default: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "stupid", scene: scene)
         }
     }
 }

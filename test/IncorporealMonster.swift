@@ -1,15 +1,15 @@
 //
-//  GroundMonster.swift
+//  IncorporealMonster.swift
 //  test
 //
-//  Created by Anderson, Todd W. on 3/29/17.
+//  Created by Rylie Anderson on 9/13/17.
 //  Copyright © 2017 Anderson, Todd W. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-class GroundMonster: Monster {
+class IncorporealMonster: Monster {
     var x: Double
     var y: Double
     var node: SKNode
@@ -32,10 +32,12 @@ class GroundMonster: Monster {
         self.scene = scene
         tileX = Int(x)
         tileY = Int(y)
+        direction = Int(arc4random_uniform(4))
         tileSize = (scene.tileSize)
         //creates a red circle and adds it to the scene in the appropriate position
         node = SKShapeNode.init(ellipseIn: CGRect.init(x: Int(0 - (tileSize/3)), y: Int(0 - (tileSize/3)), width: Int(tileSize * 2/3), height: Int(tileSize * 2/3)))
-        (node as! SKShapeNode).fillColor = UIColor.red
+        (node as! SKShapeNode).fillColor = UIColor.blue
+        (node as! SKShapeNode).alpha = 0.5
         node.zPosition = 5
         let difX = (Int(x) - (scene.tileX)) * Int(tileSize)
         let difY = (Int(y) - (scene.tileY)) * Int(tileSize)
@@ -44,9 +46,9 @@ class GroundMonster: Monster {
         scene.addChild(node)
         self.speed = speed
         switch ai {
-        case "smart": AI = SmartGroundAI(maze: scene.maze)
-        case "stupid": AI = StupidGroundAI(maze: scene.maze)
-        default: AI = SmartGroundAI(maze:scene.maze)
+        case "smart": AI = SmartIncorporealAI(maze: scene.maze)
+        case "stupid": AI = StupidIncorporealAI(maze: scene.maze)
+        default: AI = SmartIncorporealAI(maze:scene.maze)
         }
     }
     
