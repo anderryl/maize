@@ -51,7 +51,7 @@ class HologramMonster: Monster {
         switch ai {
         case "smart": AI = SmartHologramAI(maze: scene.maze)
         case "stupid": AI = StupidGroundAI(maze: scene.maze)
-        default: AI = SmartGroundAI(maze:scene.maze)
+        default: AI = SmartHologramAI(maze:scene.maze)
         }
     }
     
@@ -59,6 +59,7 @@ class HologramMonster: Monster {
     //required method of monsters that when called moves the monster
     func move() {
         //if the monster and the player occupy the same space fail the level
+        count += 1
         if (abs(node.position.x) <= CGFloat(tileSize * 2/3) && abs(node.position.y) <= CGFloat(tileSize * 2/3)) {
             scene?.controller?.failLevel()
         }

@@ -27,14 +27,14 @@ class MonsterLevel {
         self.level = level
         squibOdds = 1000 - ((level) * 1/2) - 5
         self.scene = scene
-        //depending on the level will create harder and harder levels every ten levels is a crow level where there are ridiculous numbers of crows and hawks spawned
+        //depending on the level will create harder and harder levels every ten levels is a crow level where there are ridiculous numbers of crows and hawks spawned; every 10th level offset by five a ridiculous number of ghosts and demons will spawn
         //others are mixed with pumpkins being introduced at level 6, crows at level 10, hawks at level 21, and scarecrows as default
         switch level {
-        case 1...4: monsters = [Index(monster: MonsterType.SCARECROW, odds: 100)]
+        case 1...4: monsters = [Index(monster: MonsterType.HOLOGRAM, odds: 100)]
             
         case 5: monsters = [Index(monster: MonsterType.GHOST, odds: 100)]
             
-        case 6...9: monsters = [Index(monster: MonsterType.SCARECROW, odds: 50), Index(monster: MonsterType.PUMPKIN, odds: 50)]
+        case 6...9: monsters = [Index(monster: MonsterType.HOLOGRAM, odds: 50), Index(monster: MonsterType.HOLOGRAM, odds: 50)]
             
         case 10: monsters = [Index(monster: MonsterType.CROW, odds: 100)]; squibOdds = 850
             
@@ -117,10 +117,10 @@ class MonsterLevel {
         case 2: return GroundMonster(x: Double(x), y: Double(y), speed: 1/4, ai: "stupid", scene: scene) //pumpkin
         case 3: return AirMonster(x: Double(x), y: Double(y), speed: 1/3, scene: scene) //crow
         case 4: return AirMonster(x: Double(x), y: Double(y), speed: 1/10, scene: scene) //hawk
-        case 5: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "smart", scene: scene) //ghost
-        case 6: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "stupid", scene: scene) //demon
-        case 7: return TeleportMonster(x: Double(x), y: Double(y), speed: 0, ai: "stupid", scene: scene) //flicker
-        case 8: return TeleportMonster(x: Double(x), y: Double(y), speed: 1/3, ai: "smart", scene: scene) //zombie
+        case 5: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/3, ai: "stupid", scene: scene) //ghost
+        case 6: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "smart", scene: scene) //demon
+        case 7: return TeleportMonster(x: Double(x), y: Double(y), speed: 100000, ai: "stupid", scene: scene) //flicker
+        case 8: return TeleportMonster(x: Double(x), y: Double(y), speed: 1/3, ai: "smart", scene: scene) //shadow
         default: return HologramMonster(x: Double(x), y: Double(y), speed: 3/7, ai: "smart", scene: scene) //hologram
         }
     }

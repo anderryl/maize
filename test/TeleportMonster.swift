@@ -78,6 +78,7 @@ class TeleportMonster: Monster {
                 let g: (x: Int, y : Int, d: Int) = AI.teleport(cx: tileX, cy: tileY, px: (scene?.tileX)!, py: (scene?.tileY)!)
                 tileX = g.x
                 tileY = g.y
+                direction = g.d
                 node.position = CGPoint(x: Double(tileX) * tileSize - tileSize / 2, y: Double(tileY) * tileSize - tileSize / 2)
             default:
                 break

@@ -25,7 +25,7 @@ class StupidTeleportAI: TeleportAI {
         return 5
         }
     
-    
+    //teleports any open space in a 10 * 10 square chunk
     func teleport(cx: Int, cy: Int, px: Int, py: Int) -> (x: Int, y: Int, d: Int){
         var x = -5
         var possibles: [(x: Int, y: Int)] = [(x: Int, y: Int)]()
@@ -33,12 +33,12 @@ class StupidTeleportAI: TeleportAI {
             var y = -5
             while y < 5 {
                 if (maze[x + cx][y + cy] == 0) {
-                    possibles.append((x: x, y: y))
+                    possibles.append((x: cx + x, y: cy + y))
                 }
                 y += 1
             }
+            x += 1
         }
-        x += 1
         let coord = possibles[Int(arc4random_uniform(UInt32(possibles.count)))]
         return (x: coord.x, y: coord.y, d: evaluate(x: coord.x, y: coord.y, px: px, py: py, dir: Int(arc4random_uniform(4))))
     }

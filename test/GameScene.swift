@@ -198,6 +198,7 @@ class GameScene: SKScene {
 
     //called when a tap gesture is detected pauses the game
     func inputPause() {
+        direction = 4
         if (pauseIndex >= 3) {
             pauseIndex = 0
             if (gameIsPaused) {
