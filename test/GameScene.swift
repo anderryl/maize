@@ -116,7 +116,7 @@ class GameScene: SKScene {
         timerLabel?.horizontalAlignmentMode = .center
         timerLabel?.verticalAlignmentMode = .center
         timerLabel?.fontColor = UIColor.black
-        timerLabel?.zPosition = 10
+        timerLabel?.zPosition = 40
         timerLabel?.position.x = CGFloat(Int(tileSize) * -2)
         timerLabel?.position.y = CGFloat(Int(tileSize) * 4)
         //adds the label to the scene

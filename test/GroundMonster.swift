@@ -48,6 +48,7 @@ class GroundMonster: Monster {
         case "stupid": AI = StupidGroundAI(maze: scene.maze)
         default: AI = SmartGroundAI(maze:scene.maze)
         }
+        
     }
     
     //required method of monsters that when called moves the monster

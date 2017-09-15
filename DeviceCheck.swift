@@ -29,7 +29,7 @@ public extension UIDevice {
         case "iPhone4,1":                               return 4//"iPhone 4s"
         case "iPhone5,1", "iPhone5,2":                  return 5//"iPhone 5"
         case "iPhone5,3", "iPhone5,4":                  return 6//"iPhone 5c"
-        case "iPhone6,1", "iPhone6,2":                  return 170//"iPhone 5s"
+        case "iPhone6,1", "iPhone6,2":                  return 122//"iPhone 5s"
         case "iPhone7,2":                               return 8//"iPhone 6"
         case "iPhone7,1":                               return 9//"iPhone 6 Plus"
         case "iPhone8,1":                               return 10//"iPhone 6s"

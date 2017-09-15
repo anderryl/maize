@@ -30,6 +30,7 @@ class AirMonster: Monster {
         self.scene = scene
         tileSize = (scene.tileSize)
         node = SKShapeNode()
+        node.zPosition = 30
         let path = UIBezierPath()
         //makes triangle node at specified point
         path.move(to: CGPoint(x: tileSize * -1/3, y: tileSize * -1/3))

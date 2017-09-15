@@ -30,7 +30,7 @@ class MonsterLevel {
         //depending on the level will create harder and harder levels every ten levels is a crow level where there are ridiculous numbers of crows and hawks spawned
         //others are mixed with pumpkins being introduced at level 6, crows at level 10, hawks at level 21, and scarecrows as default
         switch level {
-        case 1...4: monsters = [Index(monster: MonsterType.HOLOGRAM, odds: 100)]
+        case 1...4: monsters = [Index(monster: MonsterType.SCARECROW, odds: 100)]
             
         case 5: monsters = [Index(monster: MonsterType.GHOST, odds: 100)]
             

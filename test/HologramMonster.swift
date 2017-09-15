@@ -186,6 +186,7 @@ class HologramMonster: Monster {
         node.removeFromParent()
     }
     
+    
     func copy() -> Monster {
         var aiType: String = " "
         if (AI is StupidGroundAI) {

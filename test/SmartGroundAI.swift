@@ -59,21 +59,7 @@ class SmartGroundAI: MonsterAI {
                 }
             }
         }
-        
-        var coord: (Int, Int, Int) = (0, 0, 0)
-        switch dir {
-        case 0: coord = (0, 1, 0)
-        case 1: coord = (1, 0, 1)
-        case 2: coord = (0, -1, 2)
-        case 3: coord = (-1, 0, 3)
-        default: coord = (0, 0, 6)
-        }
-        if (maze[coord.0 + x][coord.1 + y] == 0) {
-            return coord.2
-        }
-        else {
-            return getDirection(tileX: x, tileY: y)
-        }
+        return getWeightedDirection(tileX: x, tileY: y, dir: dir)
     }
     
     func getDirection(tileX: Int, tileY: Int) -> Int {
@@ -97,6 +83,43 @@ class SmartGroundAI: MonsterAI {
         }
         let index = Int(arc4random_uniform(count))
         return possible[index]
+    }
+    
+    func getWeightedDirection(tileX: Int, tileY: Int, dir: Int) -> Int {
+        var possible = [(x: Int, y: Int)]()
+        switch (dir + 1) % 4 {
+        case 1: possible.append((1, 0))
+        case 2: possible.append((0, -1))
+        case 3: possible.append((-1, 0))
+        default: possible.append((0, 1))
+        }
+        switch (dir + 3) % 4 {
+        case 1: possible.append((1, 0))
+        case 2: possible.append((0, -1))
+        case 3: possible.append((-1, 0))
+        default: possible.append((0, 1))
+        }
+        switch dir {
+        case 1: possible.append((1, 0))
+        case 2: possible.append((0, -1))
+        case 3: possible.append((-1, 0))
+        default: possible.append((0, 1))
+        }
+        var pos = [(Int, Int)]()
+        for entry in possible {
+            if (maze[entry.x + tileX][entry.y + tileY] == 0) {
+                pos.append((entry.x, entry.y))
+            }
+        }
+        if (pos.count > 0) {
+            switch pos[Int(arc4random_uniform(UInt32(pos.count)))] {
+            case (1, 0): return 1
+            case (0, -1): return 2
+            case (-1, 0): return 3
+            default: return 0
+            }
+        }
+        return getDirection(tileX: tileX, tileY: tileY)
     }
     
     func getState(x: Int, y: Int) -> UInt8 {

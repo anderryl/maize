@@ -52,6 +52,7 @@ class IncorporealMonster: Monster {
         }
     }
     
+    
     //required method of monsters that when called moves the monster
     func move() {
         //if the monster and the player occupy the same space fail the level

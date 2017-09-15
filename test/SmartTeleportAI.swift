@@ -98,6 +98,8 @@ class SmartTeleportAI: TeleportAI {
         return possible[index]
     }
     
+    
+    
     func getState(x: Int, y: Int) -> UInt8 {
         return maze[x][y]
     }

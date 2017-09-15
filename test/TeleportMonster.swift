@@ -91,6 +91,7 @@ class TeleportMonster: Monster {
         callIndex += 1
     }
     
+    
     //method that decides where to move
     func evaluate(maze: [[UInt8]]) {
         var possible = [Int]()
