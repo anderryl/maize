@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class MazeGenerator {
     var passage: [(Int, Int)] = [(Int, Int)]()
     var maze: [[UInt8]] = [[UInt8]]()

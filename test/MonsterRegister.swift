@@ -27,31 +27,34 @@ class MonsterRegister {
     
     //creates a new row f monsters in maze passages
     func appendMonsterRow() {
-        var dir: (Int, Int) = (0, 1)
+        var direc: [(Int, Int, Int)] = [(0, 1, 20)]
         switch scene.direction {
-            case 1: dir = (1, 0)
-            case 2: dir = (0, -1)
-            case 3: dir = (-1, 0)
-            default: dir = (0, 1)
+            case 1: direc = [(1, 0, 20)]
+            case 2: direc = [(0, -1, 20)]
+            case 3: direc = [(-1, 0, 20)]
+            case 0: direc = [(0, 1, 20)]
+            default: direc = [(1, 0, 10), (0, -1, 10), (-1, 0, 10), (0, 1, 10)]
         }
         //adds monsters around a 20 tile perimeter
-        var i = -10
-        while (i < 11) {
-            if (dir.0 == 0) {
-                if (scene.getState(x: scene.tileX + i, y: scene.tileY + (dir.1 * 20)) == 0) {
-                    if (Int(arc4random_uniform(1000)) + 1 >= levelMonsters.squibOdds - 1) {
-                        monsters.append(getNewMonster(x: scene.tileX + i, y: scene.tileY + (dir.1 * 20)))
+        for dir in direc {
+            var i = -10
+            while (i < 11) {
+                if (dir.0 == 0) {
+                    if (scene.getState(x: scene.tileX + i, y: scene.tileY + (dir.1 * dir.2)) == 0) {
+                        if (Int(arc4random_uniform(1000)) + 1 >= levelMonsters.squibOdds - 1) {
+                            monsters.append(getNewMonster(x: scene.tileX + i, y: scene.tileY + (dir.1 * dir.2)))
+                        }
                     }
                 }
-            }
-            else {
-                if (scene.getState(x: scene.tileX + (dir.0 * 20), y: scene.tileY + i) == 0) {
-                    if (Int(arc4random_uniform(1000)) + 1 >= levelMonsters.squibOdds - 1) {
-                        monsters.append(getNewMonster(x: scene.tileX + (dir.0 * 20), y: scene.tileY + i))
+                else {
+                    if (scene.getState(x: scene.tileX + (dir.0 * dir.2), y: scene.tileY + i) == 0) {
+                        if (Int(arc4random_uniform(1000)) + 1 >= levelMonsters.squibOdds - 1) {
+                            monsters.append(getNewMonster(x: scene.tileX + (dir.0 * dir.2), y: scene.tileY + i))
+                        }
                     }
                 }
+                i += 1
             }
-            i += 1
         }
     }
     

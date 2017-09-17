@@ -79,7 +79,8 @@ class TeleportMonster: Monster {
                 tileX = g.x
                 tileY = g.y
                 direction = g.d
-                node.position = CGPoint(x: Double(tileX) * tileSize - tileSize / 2, y: Double(tileY) * tileSize - tileSize / 2)
+                node.position.x = CGFloat((tileX - (scene?.tileX)!) * Int(tileSize))
+                node.position.y = CGFloat((tileY - (scene?.tileY)!) * Int(tileSize))
             default:
                 break
             }

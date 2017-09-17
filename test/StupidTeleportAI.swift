@@ -10,7 +10,7 @@ import Foundation
 class StupidTeleportAI: TeleportAI {
     var maze: [[UInt8]]
     var count: Int = 0
-    let cap: Int = 180
+    let cap: Int = 9
     
     required init(maze: [[UInt8]]) {
         self.maze = maze
@@ -26,14 +26,14 @@ class StupidTeleportAI: TeleportAI {
         }
     
     //teleports any open space in a 10 * 10 square chunk
-    func teleport(cx: Int, cy: Int, px: Int, py: Int) -> (x: Int, y: Int, d: Int){
-        var x = -5
+    func teleport(cx: Int, cy: Int, px: Int, py: Int) -> (x: Int, y: Int, d: Int) {
+        var x = -1
         var possibles: [(x: Int, y: Int)] = [(x: Int, y: Int)]()
-        while x < 5 {
-            var y = -5
-            while y < 5 {
+        while x < 1 {
+            var y = -1
+            while y < 1 {
                 if (maze[x + cx][y + cy] == 0) {
-                    possibles.append((x: cx + x, y: cy + y))
+                    possibles.append((x: x + cx, y: y + cy))
                 }
                 y += 1
             }

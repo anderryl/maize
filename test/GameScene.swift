@@ -21,7 +21,7 @@ class GameScene: SKScene {
     var monsters: MonsterRegister?
     
     var maze: [[UInt8]] = [[UInt8]]()
-    var tileSize: Double = 170 * 5/7 //a tile size should be 1/5 of the width of the screen
+    var tileSize: Double = 122 //a tile size should be 1/5 of the width of the screen
     var level: Int = 1
     var controller: GameViewController?
     
@@ -93,7 +93,7 @@ class GameScene: SKScene {
         monsters = MonsterRegister(level: level, scene: self, index: level * 2 + 3)
         
         //sets and starts the timer to an amount dependant on the level
-        time = 60 + (level * 3)
+        time = 30 + (level * 1)
         
         
         //creates the level label seen at the start of each round that says 'Night Blah'
@@ -107,12 +107,12 @@ class GameScene: SKScene {
         levelLabel.position.y = CGFloat(tileSize) * 2
         //adds the label to the scene
         addChild(levelLabel)
-        //causes the label to stay for two seconds then fade out over one second.
+        //causes the label to stay for two seconds then to fade out over one second.
         levelLabel.run(SKAction.sequence([SKAction.wait(forDuration: 2), SKAction.fadeOut(withDuration: 1)]))
         
         //initiates the label in the top left hand corner that displays the time left in the level
         timerLabel = SKLabelNode(text: time?.description)
-        timerLabel?.fontSize = 50
+        timerLabel?.fontSize = 70
         timerLabel?.horizontalAlignmentMode = .center
         timerLabel?.verticalAlignmentMode = .center
         timerLabel?.fontColor = UIColor.black
@@ -368,7 +368,7 @@ class GameScene: SKScene {
             mplayer!.play()
             mplayer?.numberOfLoops = -1
         } catch _ as NSError {
-            fatalError("MUSIC NO PLAY, I KILL YOU, I KILL YOU ALL!")
+            fatalError("MUSIC NOT PLAY, IMA KILL YOU, THEN IMA KILL YOU TOO!")
         }
     }
     

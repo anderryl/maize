@@ -79,7 +79,7 @@ class TileRegister {
         var nMap = [Tile]()
         var x = 0
         for tile in map {
-            if (abs(tile.x) > 5 || abs(tile.y) > 8) {
+            if (abs(tile.x) > 6 || abs(tile.y) > 8) {
                 tile.getGround().removeFromParent()
             }
             else {
@@ -89,7 +89,6 @@ class TileRegister {
             
         }
         map = nMap
-        
         
     }
     
