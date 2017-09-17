@@ -59,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+
 		C2278DAC1F6A18B500EC8A75 /* StupidGroundAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StupidGroundAI.swift; sourceTree = "<group>"; };
 		C2278DAE1F6A1DBE00EC8A75 /* IncorporealMonster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncorporealMonster.swift; sourceTree = "<group>"; };
 		C2278DB11F6A1E6500EC8A75 /* SmartIncorporealAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartIncorporealAI.swift; sourceTree = "<group>"; };
@@ -245,6 +246,7 @@
 		F2CCE98C1E7EEF9900D03E79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C218C8E81F6E20CA0036AB6A /* Foundation.framework */,
 				F2A6C9151EABFE7900B71429 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
