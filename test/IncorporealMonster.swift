@@ -67,12 +67,14 @@ class IncorporealMonster: Monster {
             switch direction {
             case 0:
                 tileY += 1
+                node.zPosition = CGFloat(tileY)
                 node.run(SKAction.moveBy(x: CGFloat(0), y: CGFloat(tileSize), duration: speed))
             case 1:
                 tileX += 1
                 node.run(SKAction.moveBy(x: CGFloat(tileSize), y: CGFloat(0), duration: speed))
             case 2:
                 tileY -= 1
+                node.zPosition = CGFloat(tileY)
                 node.run(SKAction.moveBy(x: CGFloat(0), y: CGFloat(-1 * tileSize), duration: speed))
             case 3:
                 tileX -= 1

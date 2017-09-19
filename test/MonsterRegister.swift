@@ -37,6 +37,9 @@ class MonsterRegister {
         }
         //adds monsters around a 20 tile perimeter
         for dir in direc {
+            if (direc.count > 1 && arc4random_uniform(4) == 0) {
+                break
+            }
             var i = -10
             while (i < 11) {
                 if (dir.0 == 0) {
@@ -85,14 +88,15 @@ class MonsterRegister {
                 if (abs(Int(monster.y) - scene.tileY) > 30) {
                     monster.remove()
                 }
-                else if (monster is HologramMonster) {
+                
+                else {
+                    newMonsters.append(monster)
+                }
+                if (monster is HologramMonster) {
                     let g = (monster as! HologramMonster)
                     if (g.count > g.cap) {
                         monster.remove()
                     }
-                }
-                else {
-                    newMonsters.append(monster)
                 }
             }
             

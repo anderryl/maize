@@ -368,7 +368,7 @@ class GameScene: SKScene {
             mplayer!.play()
             mplayer?.numberOfLoops = -1
         } catch _ as NSError {
-            fatalError("MUSIC NOT PLAY, IMA KILL YOU, THEN IMA KILL YOU TOO!")
+            fatalError("MUSIC NOT PLAY, IMA' KILL YOU, UNN THAN' IMA' KILL YOU TOO!")
         }
     }
     

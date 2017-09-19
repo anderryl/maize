@@ -58,6 +58,11 @@ class MazeGenerator {
             }
         }
         if (possible.count == 0) {
+            if (x < 998 && x > 1 && y < 998 && y > 1 && arc4random_uniform(20) == 0) {
+                let m = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+                let t = m[Int(arc4random_uniform(4))]
+                maze[t.0 + x][t.1 + x] = 0
+            }
             return true
         }
         let ran = possible[Int(arc4random_uniform(UInt32(possible.count)))]

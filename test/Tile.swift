@@ -16,27 +16,30 @@ class Tile {
     var y: Int
     
     //called to create the tile
-    init(state: UInt8, size: CGRect, scene: SKScene, x: Int, y: Int) {
+    init(state: UInt8, size: CGRect, scene: GameScene, x: Int, y: Int) {
         //Initiates the sprite as a square with unrounded corners
-        ground = SKShapeNode.init(rect: size, cornerRadius: 0);
-        (ground as! SKShapeNode).fillColor = UIColor.brown;
+        //SKShapeNode.init(rect: size, cornerRadius: 0);
+        //(ground as! SKShapeNode).fillColor = UIColor.brown;
         
         //sets the layer as two
-        ground.zPosition = 2;
         //if the state is 1 it sets the color to yellow
         if (state == 1) {
-            (ground as! SKShapeNode).fillColor = UIColor.yellow;
+            ground = SKSpriteNode(imageNamed: "CornTile")
             //(ground as! SKShapeNode).strokeColor = UIColor.yellow
-            ground.zPosition = 0;
         }
             //if the state is 0 it sets the color to brown
         else {
-            (ground as! SKShapeNode).fillColor = UIColor.brown;
+            ground = SKSpriteNode(imageNamed: "GroundTile")
+            //(ground as! SKShapeNode).fillColor = UIColor.brown;
             //(ground as! SKShapeNode).strokeColor = UIColor.brown
-            ground.zPosition = 2;
+            ground.zPosition = 0;
         }
+        let pos = (scene.tileY + y - Int((state * 2))) * -1
+        ground.zPosition = CGFloat(pos)
         //adds the node to the scene.
         scene.addChild(ground)
+        ground.position.x = size.origin.x + size.width / 2
+        ground.position.y = size.origin.y + size.height / 2
         self.x = x
         self.y = y
     }
