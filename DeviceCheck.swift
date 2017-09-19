@@ -37,19 +37,19 @@ public extension UIDevice {
         case "iPhone9,1", "iPhone9,3":                  return 122//"iPhone 7"
         case "iPhone9,2", "iPhone9,4":                  return 122//"iPhone 7 Plus"
         case "iPhone8,4":                               return 122//"iPhone SE"
-        case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return 15//"iPad 2"
-        case "iPad3,1", "iPad3,2", "iPad3,3":           return 16//"iPad 3"
+        case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return 122//"iPad 2"
+        case "iPad3,1", "iPad3,2", "iPad3,3":           return 122//"iPad 3"
         case "iPad3,4", "iPad3,5", "iPad3,6":           return 122//"iPad 4"
-        case "iPad4,1", "iPad4,2", "iPad4,3":           return 18//"iPad Air"
-        case "iPad5,3", "iPad5,4":                      return 19//"iPad Air 2"
-        case "iPad2,5", "iPad2,6", "iPad2,7":           return 20//"iPad Mini"
-        case "iPad4,4", "iPad4,5", "iPad4,6":           return 21//"iPad Mini 2"
-        case "iPad4,7", "iPad4,8", "iPad4,9":           return 22//"iPad Mini 3"
-        case "iPad5,1", "iPad5,2":                      return 23//"iPad Mini 4"
-        case "iPad6,3", "iPad6,4", "iPad6,7", "iPad6,8":return 24//"iPad Pro"
+        case "iPad4,1", "iPad4,2", "iPad4,3":           return 122//"iPad Air"
+        case "iPad5,3", "iPad5,4":                      return 122//"iPad Air 2"
+        case "iPad2,5", "iPad2,6", "iPad2,7":           return 122//"iPad Mini"
+        case "iPad4,4", "iPad4,5", "iPad4,6":           return 122//"iPad Mini 2"
+        case "iPad4,7", "iPad4,8", "iPad4,9":           return 122//"iPad Mini 3"
+        case "iPad5,1", "iPad5,2":                      return 122//"iPad Mini 4"
+        case "iPad6,3", "iPad6,4", "iPad6,7", "iPad6,8":return 122//"iPad Pro"
         case "AppleTV5,3":                              return 122//"Apple TV"
         case "i386", "x86_64":                          return 122//"Simulator"
-        default:                                        return 27
+        default:                                        return 122
         }
     }
     

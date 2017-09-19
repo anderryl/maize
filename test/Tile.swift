@@ -58,6 +58,7 @@ class Tile {
         else {
             x -= 1
         }
+        //ground.run(SKAction.animate(with: [SKTexture], timePerFrame: 0.03333))
     }
     
     func moveY(amount: Double, duration: TimeInterval) {
@@ -68,6 +69,7 @@ class Tile {
         else {
             y -= 1
         }
+        //ground.run(SKAction.animate(with: [SKTexture], timePerFrame: 0.03333))
     }
     
     //returns the node that this Tile helps represent
