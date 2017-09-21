@@ -46,7 +46,6 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         //sets up the swipe gesture recognizers for each direction
-        startLabel.run(SKAction.fadeOut(withDuration: 1.0))
         swipeDown = UISwipeGestureRecognizer.init(target: self, action: #selector(GameScene.inputDown))
         swipeDown?.direction = UISwipeGestureRecognizerDirection.down
         self.view?.addGestureRecognizer(swipeDown!)
@@ -368,6 +367,7 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (!started) {
             unpause()
+            startLabel.run(SKAction.fadeOut(withDuration: 1))
         }
         started = true
     }
