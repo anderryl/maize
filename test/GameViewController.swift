@@ -9,11 +9,13 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GoogleMobileAds
 
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GADInterstitialDelegate {
 
     var scene: SKScene? = nil;
+    var interstitial: GADInterstitial!
     
     //called when the vuew loads (when the splash screen ends)
     override func viewDidLoad() {
@@ -31,6 +33,10 @@ class GameViewController: UIViewController {
         view.presentScene(scene!, transition: SKTransition.fade(with: UIColor.white, duration: 1.0))*/
         
         //initiates the game scene and starts the game
+        super.viewDidLoad()
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        interstitial.load(request)
         startLevel()
 
     }
@@ -118,6 +124,52 @@ class GameViewController: UIViewController {
     
     //called when the player fails a level, this starts the level over again
     func failLevel() {
+        playAd()
         startLevel()
+    }
+    
+    func playAd() {
+        if (interstitial.isReady && arc4random_uniform(4) == 0) {
+            interstitial.present(fromRootViewController: self)
+        }
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-4200805572467087/5572345095")
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
+    }
+    
+    // Tells the delegate the interstitial had been animated off the screen.
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        interstitial = createAndLoadInterstitial()
+    }
+    
+    /// Tells the delegate an ad request succeeded.
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        print("interstitialDidReceiveAd")
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that an interstitial will be presented.
+    func interstitialWillPresentScreen(_ ad: GADInterstitial) {
+        print("interstitialWillPresentScreen")
+    }
+    
+    /// Tells the delegate the interstitial is to be animated off the screen.
+    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
+        print("interstitialWillDismissScreen")
+    }
+    
+    
+    /// Tells the delegate that a user click will open another app
+    /// (such as the App Store), backgrounding the current app.
+    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
+        print("interstitialWillLeaveApplication")
     }
 }

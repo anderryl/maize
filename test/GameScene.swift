@@ -39,9 +39,14 @@ class GameScene: SKScene {
     var pauseIndex: Int = 0
     var pauseLabel: SKLabelNode = SKLabelNode(text:
     "PAUSED")
+    var startLabel: SKLabelNode = SKLabelNode(text:
+        "touch screen to start")
+    var started: Bool = false
+
     
     override func didMove(to view: SKView) {
         //sets up the swipe gesture recognizers for each direction
+        startLabel.run(SKAction.fadeOut(withDuration: 1.0))
         swipeDown = UISwipeGestureRecognizer.init(target: self, action: #selector(GameScene.inputDown))
         swipeDown?.direction = UISwipeGestureRecognizerDirection.down
         self.view?.addGestureRecognizer(swipeDown!)
@@ -78,7 +83,7 @@ class GameScene: SKScene {
         //begins the game loop by repeatedly calling 'move' methods on the player and the monster
         player?.run(SKAction.repeatForever(SKAction.sequence([SKAction.run {
             self.move()
-        }, SKAction.wait(forDuration: 1/3)])))
+            }, SKAction.wait(forDuration: 1/3)])))
         player?.run(SKAction.repeatForever(SKAction.sequence([SKAction.run {
             self.moveMonsters()
             }, SKAction.wait(forDuration: 1/60)])))
@@ -132,8 +137,18 @@ class GameScene: SKScene {
         addChild(pauseLabel)
         pauseLabel.run(SKAction.fadeOut(withDuration: 0))
         
+        startLabel.fontSize = 100
+        startLabel.position.x = 0
+        startLabel.position.y = 0
+        startLabel.horizontalAlignmentMode = .center
+        startLabel.verticalAlignmentMode = .center
+        startLabel.fontColor = UIColor.black
+        startLabel.zPosition = 10
+        addChild(startLabel)
+        
         //starts the creepy music and sets it to a loop
         playMusic()
+        freeze()
     }
     
     //the initializer for the game scene class that gives it the maze, where to start from, the tileSize, and the controller adress
@@ -146,6 +161,8 @@ class GameScene: SKScene {
         tileY = y
         positionX = Double(x)
         positionY = Double(y)
+        
+        
         super.init(size: size)
     }
     
@@ -162,6 +179,11 @@ class GameScene: SKScene {
         gameIsPaused = true
         pauseLabel.run(SKAction.fadeIn(withDuration: 0.5))
     }
+    
+    func freeze() {
+        countLoop?.invalidate()
+        gameIsPaused = true
+        }
     
     //method that unpauses the game
     func unpause() {
@@ -341,6 +363,13 @@ class GameScene: SKScene {
             return
         }
         monsters?.moveMonsters()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (!started) {
+            unpause()
+        }
+        started = true
     }
     
     //called every second and moves down the timer and calls end if timer is at 0
