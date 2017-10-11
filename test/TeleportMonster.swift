@@ -79,8 +79,14 @@ class TeleportMonster: Monster {
                 tileX = g.x
                 tileY = g.y
                 direction = g.d
-                node.position.x = CGFloat((tileX - (scene?.tileX)!) * Int(tileSize))
-                node.position.y = CGFloat((tileY - (scene?.tileY)!) * Int(tileSize))
+                for tile in (scene?.map?.map)! {
+                    if tile.x == tileX && tile.y == tileY {
+                        node.position.x = tile.ground.position.x
+                        node.position.y = tile.ground.position.y
+                    }
+                }
+                /*node.position.x = CGFloat((tileX - (scene?.tileX)!) * Int(tileSize))
+                node.position.y = CGFloat((tileY - (scene?.tileY)!) * Int(tileSize))*/
             default:
                 break
             }
@@ -132,7 +138,6 @@ class TeleportMonster: Monster {
     }
     
     
-    //
     func playerMove(direction: Int) {
         switch direction {
         case 0:
@@ -163,10 +168,10 @@ class TeleportMonster: Monster {
     
     func copy() -> Monster {
         var aiType: String = " "
-        if (AI is StupidGroundAI) {
+        if (AI is StupidTeleportAI) {
             aiType = "stupid"
         }
-        else if (AI is SmartGroundAI) {
+        else if (AI is SmartTeleportAI) {
             aiType = "smart"
         }
         else {

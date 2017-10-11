@@ -19,6 +19,5 @@ class MonsterType {
     static let GHOST: Int = 6
     static let FLICKER: Int = 7
     static let SHADOW: Int = 8
-    static let HOLOGRAM: Int = 9
 }
 

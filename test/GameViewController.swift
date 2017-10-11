@@ -16,6 +16,7 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
 
     var scene: SKScene? = nil;
     var interstitial: GADInterstitial!
+    var maze: [[UInt8]]?
     
     //called when the vuew loads (when the splash screen ends)
     override func viewDidLoad() {
@@ -37,8 +38,8 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
         let request = GADRequest()
         interstitial.load(request)
+        maze = loadMaze()
         startLevel()
-
     }
 
     override var shouldAutorotate: Bool {
@@ -64,7 +65,7 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
     }
     func startLevel() {
         //initiates game scene
-        scene = GameScene(size: CGSize(width: 2048, height: 1536), tile: UIDevice.current.width /*Double(UIScreen.main.bounds.width) / 2.5*/, controller: self, maze: loadMaze(), level: loadInteger(key: "level"), x: loadInteger(key: "x"), y: loadInteger(key: "y"))
+        scene = GameScene(size: CGSize(width: 2048, height: 1536), tile: UIDevice.current.width /*Double(UIScreen.main.bounds.width) / 2.5*/, controller: self, maze: maze!, level: loadInteger(key: "level"), x: loadInteger(key: "x"), y: loadInteger(key: "y"))
         let view = self.view as! SKView
         view.ignoresSiblingOrder = true
         view.showsFPS = true

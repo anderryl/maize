@@ -98,6 +98,8 @@ class GameScene: SKScene {
         
         //sets and starts the timer to an amount dependant on the level
         time = 30 + (level * 1)
+        backgroundColor = UIColor.black
+        
         
         
         //creates the level label seen at the start of each round that says 'Night Blah'
@@ -397,7 +399,7 @@ class GameScene: SKScene {
             mplayer!.play()
             mplayer?.numberOfLoops = -1
         } catch _ as NSError {
-            fatalError("MUSIC NOT PLAY, IMA' KILL YOU, UNN THAN' IMA' KILL YOU TOO!")
+            fatalError("MUSIC NOT PLAY, IMA' KILL YOU, UNN HAN' IMA' KILL YOU TOO!")
         }
     }
     

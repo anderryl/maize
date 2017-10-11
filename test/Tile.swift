@@ -24,12 +24,12 @@ class Tile {
         //sets the layer as two
         //if the state is 1 it sets the color to yellow
         if (state == 1) {
-            ground = SKSpriteNode(imageNamed: "CornTile")
+            ground = SKSpriteNode(imageNamed: "corn1")
             //(ground as! SKShapeNode).strokeColor = UIColor.yellow
         }
             //if the state is 0 it sets the color to brown
         else {
-            ground = SKSpriteNode(imageNamed: "GroundTile")
+            ground = SKSpriteNode(imageNamed: "path" + String.init(arc4random_uniform(3) + 1))
             //(ground as! SKShapeNode).fillColor = UIColor.brown;
             //(ground as! SKShapeNode).strokeColor = UIColor.brown
             ground.zPosition = 0;

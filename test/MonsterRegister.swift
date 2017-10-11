@@ -92,12 +92,6 @@ class MonsterRegister {
                 else {
                     newMonsters.append(monster)
                 }
-                if (monster is HologramMonster) {
-                    let g = (monster as! HologramMonster)
-                    if (g.count > g.cap) {
-                        monster.remove()
-                    }
-                }
             }
             
         }

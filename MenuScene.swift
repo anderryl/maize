@@ -16,6 +16,16 @@ class MenuScene: SKScene {
     var tapRecognizer: UITapGestureRecognizer?
     
     override func didMove(to view: SKView) {
+        //
+    }
+    
+    init(controller: GameViewController) {
+        self.controller = controller
+        
+        
+        
+        playButton?.run(SKAction.repeatForever(SKAction.sequence([SKAction.fadeOut(withDuration: 1.0), SKAction.fadeIn(withDuration: 1.0), SKAction.wait(forDuration: 1.0)])))
+        super.init()
         scene?.backgroundColor = UIColor.yellow
         anchorPoint = (CGPoint.init(x: 0.5, y: 0.5))
         playButton = SKLabelNode(text: "tap to start")
@@ -27,12 +37,6 @@ class MenuScene: SKScene {
         playButton?.verticalAlignmentMode = .center
         playButton?.zPosition = 10
         addChild(playButton!)
-        playButton?.run(SKAction.repeatForever(SKAction.sequence([SKAction.fadeOut(withDuration: 1.0), SKAction.fadeIn(withDuration: 1.0), SKAction.wait(forDuration: 1.0)])))
-    }
-    
-    init(controller: GameViewController) {
-        self.controller = controller
-        super.init()
     }
     
     override init(size: CGSize) {
@@ -40,7 +44,7 @@ class MenuScene: SKScene {
     }
     //called when the screen is touched
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        controller?.startLevel()
+        controller!.startLevel()
     }
     
     required init?(coder aDecoder: NSCoder) {

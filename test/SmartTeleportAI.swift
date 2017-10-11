@@ -65,7 +65,7 @@ class SmartTeleportAI: TeleportAI {
         case 1: coord = (1, 0, 1)
         case 2: coord = (0, -1, 2)
         case 3: coord = (-1, 0, 3)
-        default: coord = (0, 0, 6)
+        default: coord = (0, 1, 0)
         }
         if (maze[coord.0 + x][coord.1 + y] == 0) {
             return coord.2

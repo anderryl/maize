@@ -30,7 +30,8 @@ class MonsterLevel {
         //depending on the level will create harder and harder levels every ten levels is a crow level where there are ridiculous numbers of crows and hawks spawned; every 10th level offset by five a ridiculous number of ghosts and demons will spawn
         //others are mixed with pumpkins being introduced at level 6, crows at level 10, hawks at level 21, and scarecrows as default
         switch level {
-        case 1...4: monsters = [Index(monster: MonsterType.SCARECROW, odds: 100)]; squibOdds = 900
+        //case 1...100: monsters = [Index(monster: MonsterType.SHADOW, odds: 100)]; squibOdds = 900
+        case 1...4: monsters = [Index(monster: MonsterType.SCARECROW, odds: 100)];
             
         case 5: monsters = [Index(monster: MonsterType.GHOST, odds: 100)]
             
@@ -122,7 +123,7 @@ class MonsterLevel {
         case 6: return IncorporealMonster(x: Double(x), y: Double(y), speed: 1/2, ai: "smart", scene: scene) //demon
         case 7: return TeleportMonster(x: Double(x), y: Double(y), speed: 1/3, ai: "stupid", scene: scene) //flicker
         case 8: return TeleportMonster(x: Double(x), y: Double(y), speed: 1/3, ai: "smart", scene: scene) //shadow
-        default: return HologramMonster(x: Double(x), y: Double(y), speed: 3/7, ai: "smart", scene: scene) //hologram
+        default: return TeleportMonster(x: Double(x), y: Double(y), speed: 1/3, ai: "smart", scene: scene) //shadow
         }
     }
 }
